@@ -1,0 +1,11 @@
+#contain
+  %img#left_eye.left_eye/
+  %img#right_eye.right_eye/
+  %img#face{:src => "images/diego-face.png"}/
+
+:javascript
+  window.log = function() {
+    if (typeof window.console == 'undefined') window.console = function(){}
+  }
+%script{:charset => "utf-8", :src => "js/mootools-core-1.4.5.js", :type => "text/javascript"}
+%script{:charset => "utf-8", :src => "js/eye.js", :type => "text/javascript"}
