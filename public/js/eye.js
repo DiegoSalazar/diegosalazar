@@ -147,6 +147,6 @@ var Eye = new Class ({
 //   $(document).getElements('.eye').setStyle('display', 'auto');
 // }
 
-var options = { socketRadius: 28, stickToSocket: false };
+var options = { socketRadius: 28, stickToSocket: false, bindTouchMove: true };
 new Eye('left', options);
 new Eye('right', options);
