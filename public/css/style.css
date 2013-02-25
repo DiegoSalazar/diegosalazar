@@ -2,80 +2,33 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+b,u,i,center,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,embed,
+figure,figcaption,footer,header,hgroup,
+menu,nav,output,ruby,section,summary,
+time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{display:block;}
+body{line-height:1;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,
+q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
 
 /* Googily eyes */
 
-#contain {
-    position: relative;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    width: 800px;
-}
-
-#face {
-  position: relative;
-  z-index: 1;
-}
-
-.left_eye, .right_eye {
-  z-index: 0;
-  width: 51px;
-  height: 47px;
-  top:  457px;
-}
-
-.left_eye {
-    position: absolute;
-    left: 290px;
-    background: url("../images/eye.png") no-repeat;
-}
-
-.right_eye {
-    position: absolute;
-    left: 475px;
-    background: url("../images/eye.png") no-repeat;
-}
+#contain{position:relative;margin:0 auto;width:800px;}
+#face{position:relative;z-index:1;}
+.eye{position:absolute;z-index:0;width:51px;height:47px;top:308px;background:url("../images/eye.png") no-repeat;}
+#left{left:290px;}
+#right{left:475px;}

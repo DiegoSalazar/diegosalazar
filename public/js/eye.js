@@ -147,5 +147,5 @@ var Eye = new Class ({
 });
 
 var options = { socketRadius: 28 };
-new Eye('left_eye', options);
-new Eye('right_eye', options);
+new Eye('left', options);
+new Eye('right', options);
