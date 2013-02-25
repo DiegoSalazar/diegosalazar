@@ -1,10 +1,9 @@
 /*
 ---
-
 description: |
-             Eye following the mouse by moving inside a circular eye socket.
-             We assume the eye is initially positioned at the center of the circle.
-             Its position must be absolute or relative (we're using top and left)
+  Eye following the mouse by moving inside a circular eye socket.
+  We assume the eye is initially positioned at the center of the circle.
+  Its position must be absolute or relative (we're using top and left)
 
 authors:
 - Goutte <antoine@goutenoir.com>
@@ -24,7 +23,6 @@ requires:
 
 provides:
 - Eye
-
 ...
 */
 var Eye = new Class ({
@@ -51,24 +49,8 @@ var Eye = new Class ({
     this.elementLeft = this.element.getStyle('left').toInt();
     this.origElTop = this.elementTop;
     this.origElLeft = this.elementLeft;
+    this.leaveTimerId = null;
     this.bindEyeMoveEvents();
-    
-    var leaveTimerId = null;
-    
-    // move back to original when mouse leaves
-    this.options.eventListenerElement.addEvent('mouseout', function(event){
-      var el = this.element
-      var x = this.origElTop;
-      var y = this.origElLeft;
-      
-      leaveTimerId = setTimeout(function() {
-        el.setPosition({ x:y, y:x });
-      }, 200)
-    }.bind(this));
-    
-    this.options.eventListenerElement.addEvent('mouseenter', function(event){
-      clearTimeout(leaveTimerId);
-    }.bind(this));
   },
 
   bindEyeMoveEvents: function () {
@@ -84,6 +66,21 @@ var Eye = new Class ({
         this.reactToEventPosition(touch.pageX, touch.pageY);
       }.bind(this));
     }
+    
+    // move back to original when mouse leaves
+    this.options.eventListenerElement.addEvent('mouseout', function(event){
+      var el = this.element
+      var x = this.origElTop;
+      var y = this.origElLeft;
+      
+      leaveTimerId = setTimeout(function() {
+        el.setPosition({ x:y, y:x });
+      }, 200)
+    }.bind(this));
+    
+    this.options.eventListenerElement.addEvent('mouseenter', function(event){
+      clearTimeout(leaveTimerId);
+    }.bind(this));
   },
 
   /**
@@ -146,6 +143,10 @@ var Eye = new Class ({
 
 });
 
-var options = { socketRadius: 28 };
+document.id('face').onload = function() {
+  $(document).getElements('.eye').setStyle('display', 'block');
+}
+
+var options = { socketRadius: 28, stickToSocket: false };
 new Eye('left', options);
 new Eye('right', options);
