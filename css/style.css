@@ -1,0 +1,30 @@
+#contain {
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 800px;
+}
+
+#face {
+  position: relative;
+  z-index: 1;
+}
+
+.left_eye, .right_eye {
+  z-index: 0;
+  width: 51px;
+  height: 47px;
+  top:  457px;
+}
+
+.left_eye {
+    position: absolute;
+    left: 290px;
+    background: url("../images/eye.png") no-repeat;
+}
+
+.right_eye {
+    position: absolute;
+    left: 475px;
+    background: url("../images/eye.png") no-repeat;
+}
