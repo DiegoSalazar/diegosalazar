@@ -68,19 +68,19 @@ var Eye = new Class ({
     }
     
     // move back to original when mouse leaves
-    this.options.eventListenerElement.addEvent('mouseout', function(event){
-      var el = this.element
-      var x = this.origElTop;
-      var y = this.origElLeft;
-      
-      leaveTimerId = setTimeout(function() {
-        el.setPosition({ x:y, y:x });
-      }, 200)
-    }.bind(this));
-    
-    this.options.eventListenerElement.addEvent('mouseenter', function(event){
-      clearTimeout(leaveTimerId);
-    }.bind(this));
+    // this.options.eventListenerElement.addEvent('mouseout', function(event){
+    //   var el = this.element
+    //   var x = this.origElTop;
+    //   var y = this.origElLeft;
+    //   
+    //   leaveTimerId = setTimeout(function() {
+    //     el.setPosition({ x:y, y:x });
+    //   }, 200)
+    // }.bind(this));
+    // 
+    // this.options.eventListenerElement.addEvent('mouseenter', function(event){
+    //   clearTimeout(leaveTimerId);
+    // }.bind(this));
   },
 
   /**
@@ -143,9 +143,9 @@ var Eye = new Class ({
 
 });
 
-document.id('face').onload = function() {
-  $(document).getElements('.eye').setStyle('display', 'block');
-}
+// document.id('face').onload = function() {
+//   $(document).getElements('.eye').setStyle('display', 'auto');
+// }
 
 var options = { socketRadius: 28, stickToSocket: false };
 new Eye('left', options);

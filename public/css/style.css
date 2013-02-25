@@ -29,6 +29,6 @@ table{border-collapse:collapse;border-spacing:0;}
 
 #contain{position:relative;margin:0 auto;width:800px;}
 #face{position:relative;z-index:1;}
-.eye{position:absolute;z-index:0;width:51px;height:47px;top:308px;background:url("../images/eye.png") no-repeat;display:auto}
+.eye{position:absolute;z-index:0;width:51px;height:47px;top:308px;background:url("../images/eye.png") no-repeat;}
 #left{left:290px;}
 #right{left:475px;}
