@@ -53,16 +53,21 @@ var Eye = new Class ({
     this.origElLeft = this.elementLeft;
     this.bindEyeMoveEvents();
     
-    console.log({ 'top': this.origElTop, 'left': this.origElLeft })
+    var leaveTimerId = null;
     
     // move back to original when mouse leaves
     this.options.eventListenerElement.addEvent('mouseout', function(event){
-      console.log('mouseout', this)
-      var el = document.id(this.id)
-      var x = this.origElTop - el.getStyle('height').toInt();
-      var y = this.origElLeft - el.getStyle('width').toInt();
-      console.log({ 'origX': x, 'origY': y });
-      el.setPosition({ x:x, y:y });
+      var el = this.element
+      var x = this.origElTop;
+      var y = this.origElLeft;
+      
+      leaveTimerId = setTimeout(function() {
+        el.setPosition({ x:y, y:x });
+      }, 200)
+    }.bind(this));
+    
+    this.options.eventListenerElement.addEvent('mouseenter', function(event){
+      clearTimeout(leaveTimerId);
     }.bind(this));
   },
 

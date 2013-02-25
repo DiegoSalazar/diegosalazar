@@ -14,6 +14,11 @@
     </div>
     
     <script src="js/mootools-core-1.4.5.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      window.log = function() {
+        if (typeof window.console == 'undefined') window.console = function(){}
+      }
+    </script>
     <script src="js/eye.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
