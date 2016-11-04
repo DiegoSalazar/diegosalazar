@@ -1,11 +1,565 @@
-#contain
-  #left.eye
-  #right.eye
-  %img#face{:src => "images/diego-face.png"}/
+!!!
+/[if IE 8] <html lang="en" class="ie8">
+/[if IE 9] <html lang="en" class="ie9">
+/ [if !IE]><!
+%html{lang: "en"}
+  / <![endif]
+  %head
+    %title Diego Salazar
+    / Meta
+    %meta{charset: "utf-8"}/
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "Diego Salazar's Personal Homepage", name: "description"}/
+    %meta{content: "Diego Salazar", name: "author"}/
+    %link{href: "favicon.ico", rel: "shortcut icon"}/
+    %link{href: "http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic", rel: "stylesheet", type: "text/css"}/
+    %link{href: "http://fonts.googleapis.com/css?family=Montserrat:400,700", rel: "stylesheet", type: "text/css"}/
+    / Global CSS
+    %link{href: "plugins/bootstrap/css/bootstrap.min.css", rel: "stylesheet"}/
+    / Plugins CSS
+    %link{href: "plugins/font-awesome/css/font-awesome.css", rel: "stylesheet"}/
+    / github calendar css
+    %link{href: "plugins/github-calendar/dist/github-calendar.css", rel: "stylesheet"}/
+    / github acitivity css
+    %link{href: "plugins/github-activity/src/github-activity.css", rel: "stylesheet"}/
+    %link{href: "//cdnjs.buttflare.com/ajax/libs/octicons/2.0.2/octicons.min.css", rel: "stylesheet"}/
+    / Theme CSS
+    %link#theme-style{href: "css/styles.css", rel: "stylesheet"}/
+    / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  %body
+    / ******HEADER******
+    %header.header
+      .container
+        %img.profile-image.img-responsive.pull-left{alt: "Diego Salazar", src: "images/profile.jpg", width: 200}/
+        .profile-content.pull-left
+          %h1.name Diego Salazar
+          %h2.desc Vice President of Engineering
+          %ul.social.list-inline
+            %li
+              %a{href: "https://twitter.com/mastermindxs"}
+                %i.fa.fa-twitter
+            %li
+              %a{href: "https://www.linkedin.com/in/diegoesalazar"}
+                %i.fa.fa-linkedin
+            %li
+              %a{href: "https://github.com/DiegoSalazar/"}
+                %i.fa.fa-github-alt
+            %li.last-item
+              %a{href: "stackoverflow.com/users/156746/diego-greyrobot"}
+                %i.fa.fa-stack-overflow
+        / //profile
+        %a.btn.btn-cta-primary.pull-right{href: "mailto:me@diegosalazar.co"}
+          %i.fa.fa-paper-plane
+          Contact Me
+      / //container
+    / //header
+    .container.sections-wrapper
+      .row
+        .primary.col-md-8.col-sm-12.col-xs-12
+          %section.about.section
+            .section-inner
+              %h2.heading About Me
+              .content
+                %p Passionate about code quality, style, and maintainability. I love teaching, playing music, and riding bikes. 
+                #p I started writing code back in the MySpace days (2006) tweaking HTML/CSS. In my job as an IT tech I realized a paper based method of record keeping could be made more efficient and less error prone if I created an app for it. I sat down to read a few chapters of PHP/MySQL and realized I was a natural at understanding code and logic. I fell in love with building apps and taught myself enough to get hired professionally as a web developer. I continued soaking up books, articles, documentation, and QAs to get to where I am today. 
+              / //content
+            / //section-inner
+          / //section
+          %section.latest.section
+            .section-inner
+              %h2.heading Latest Projects
+              .content
+                .item.featured.text-center
+                  %h3.title
+                    %a{href: "http://diegosalazar.github.io/ConwaysGameOfLife/", target: "_blank"} Conway's Game of Life
+                  %p.summary An HTML5/Canvas/Javascript implementation of the famous cellular automaton Conway's Game of Life
+                  .featured-image
+                    %a{href: "http://diegosalazar.github.io/ConwaysGameOfLife/", target: "_blank"}
+                      %img.img-responsive.project-image{alt: "Conways's Game of Life", src: "images/projects/conways.png"}/
+                  .desc.text-left
+                    %p The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
 
-:javascript
-  window.log = function() {
-    if (typeof window.console == 'undefined') window.console = function(){}
-  }
-%script{:charset => "utf-8", :src => "js/mootools-core-1.4.5.js", :type => "text/javascript"}
-%script{:charset => "utf-8", :src => "js/eye.js", :type => "text/javascript"}
+                    %p The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
+                    
+                    %a{href: "https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life", target: "_blank"} 
+                      Wikipedia.
+                      %i.fa.fa-external-link
+                  / //desc
+                  %a.btn.btn-cta-secondary{href: "https://github.com/DiegoSalazar/ConwaysGameOfLife", target: "_blank"}
+                    %i.fa.fa-star
+                    Please star my project
+                / //item
+                %hr.divider/
+                .item.row
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "http://diegosalazar.github.io/CircleWaves/", target: "_blank"}
+                    %img.img-responsive.project-image{alt: "Circle Waves", src: "images/projects/circlewaves.png"}/
+                  .desc.col-md-8.col-sm-8.col-xs-12
+                    %h3.title
+                      %a{href: "http://diegosalazar.github.io/CircleWaves/", target: "_blank"} Circle Waves - A Web Toy
+                    %p An HTML/Javascript based toy inspired by an entrancing Gif.
+                    %p
+                      %a.more-link{href: "https://github.com/DiegoSalazar/CircleWaves", target: "_blank"}
+                        %i.fa.fa-external-link
+                        Please star my project
+                  / //desc
+                / //item
+                .item.row
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank"}
+                    %img.img-responsive.project-image{alt: "Defretry", src: "images/projects/defretry.png"}/
+                  .desc.col-md-8.col-sm-8.col-xs-12
+                    %h3.title
+                      %a{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank"} Defretry - Method Retry Micro-library
+                    %p Rubygem to add configurable retry logic to methods and blocks of code.
+                    %p
+                      %a.more-link{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank"}
+                        %i.fa.fa-external-link
+                        Please star my project
+                  / //desc
+                / //item
+                .item.row
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "http://gifantry.herokuapp.com", target: "_blank"}
+                    %img.img-responsive.project-image{alt: "Gifantry", src: "images/projects/gifantry.png"}/
+                  .desc.col-md-8.col-sm-8.col-xs-12
+                    %h3.title
+                      %a{href: "http://gifantry.herokuapp.com", target: "_blank"} Gifantry - Personal Image Organizer
+                    %p Rails based open source web app that allows bulk upload and categorization/tagging of images and allows full text search and quick direct link copy.
+                    %p
+                      %a.more-link{href: "https://github.com/DiegoSalazar/gifantry", target: "_blank"}
+                        %i.fa.fa-external-link
+                        Please star my project
+                  / //desc
+                / //item
+                .item.row
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank"}
+                    %img.img-responsive.project-image{alt: "Wordlick", src: "images/projects/wordlick.png"}/
+                  .desc.col-md-8.col-sm-8.col-xs-12
+                    %h3.title
+                      %a{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank"} Wordlick - Hangman Solver
+                    %p Solves Hangman. Input already guessed letters of a word and this micro-app will figure out the most likely word solutions.
+                    %p
+                      %a.more-link{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank"}
+                        %i.fa.fa-external-link
+                        Please star my project
+                  / //desc
+                / //item
+              / //content
+            / //section-inner
+          / //section
+          
+          / %section.projects.section
+          /   .section-inner
+          /     %h2.heading Other Projects
+          /     .content
+          /       .item
+          /         %h3.title
+          /           %a{href: "#"} Project Title Cras Lacus
+          /         %p.summary Provide a brief description of your project. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatu.
+          /         %p
+          /           %a.more-link{href: "http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-mobile-apps-delta/", target: "_blank"}
+          /             %i.fa.fa-external-link
+          /             Find out more
+          /       / //item
+          /       %a.btn.btn-cta-secondary{href: "#"}
+          /         More on CoderWall
+          /         %i.fa.fa-chevron-right
+          /     / //content
+          /   / //section-inner
+          / / //section
+
+          %section.experience.section
+            .section-inner
+              %h2.heading Work Experience
+              .content
+                .item
+                  %h3.title
+                    Vice President of Engineering -
+                    %span.place
+                      %a{href: "http://kipusystems.com/", target: "_blank"} Kipu Systems
+                    %span.year (2013 - Present)
+                  
+                  %p Kipu Systems is a SAAS based medical software company specializing in EMR and lab integrations where I lead a team of software engineers and liaise with other departments and third parties. I am the goto senior engineer for programming help and questions for the team. I consult the CTO on software related challenges. I am a lead architect on software projects. I improve collaboration and planning by researching and applying appropriate tools and processes. I mentor junior engineers and conduct code reviews and pair programming sessions. I'm in charge of technical interviews and have a final say on hiring. I plan sprints, improve documentation and the onboarding process for new hires.
+                  
+                  %p Highlights:
+                  %ul
+                    %li Lead the growth of a team of 3 software engineers into a team of 20, meanwhile the company grew from dozens to hundreds of clinical facility clients.
+                    %li Instituted team policies and software tools for collaboration, communication, and remote work.
+                    %li Designed and built a high reliability asynchronous API architecture supporting millions of request per second
+                    %li Lead hiring, code reviews, and mentoring efforts
+
+                / //item
+                .item
+                  %h3.title
+                    Senior Software Engineer -
+                    %span.place
+                      %a{href: "http://www.1sale.com/", target: "_blank"} Octagon Commerce
+                    %span.year (2011 - 2013)
+                  
+                  %p Architected a fault tolerant service oriented architecture framework. Lead internal software projects and pair programmed through feature development. Developed and maintained user facing features as well as internal apps. Was on standby for emergency situations and successfully debugged and fixed live production code on multiple occasions. Improved and refactored legacy code and tests. Presented research projects to the team to evangelize state of the art techniques and paradigms.
+
+                  %p Highlights:
+                  %ul
+                    %li Designed and built a service oriented framework with asynchronous message passing and message delivery reliability.
+                    %li Tasked with frontend and backend engineering projects.
+                / //item
+                .item
+                  %h3.title
+                    Founding Engineer -
+                    %span.place
+                      %a{href: "https://usselfstorage.com/"} US Self Storage Locator
+                    %span.year (2010 - 2011)
+                  
+                  %p Architected an application framework from the ground up. Lead development of a new business. Created platform for admins, site owners, and users to efficiently search for and rent self storage units. Lead marketing efforts and provided direction on all matters of development and marketing in a startup environment. Setup office network with Active Directory and installed computes, a server, and backups.
+                  
+                  %p Highlights:
+                  %ul
+                    %li Designed and built a SAAS platform for self storage marketing, search, and booking.
+                / //item
+                .item
+                  %h3.title
+                    Founding Engineer -
+                    %span.place
+                      %a{href: "https://usselfstorage.com/"} Grey Robot Inc.
+                    %span.year (2009 - 2011)
+                  
+                  %p Started as a freelancer and then teamed up with my brother and a friend to develop apps for businesses. Provided website and web app development services to small businesses and professionals. Developed a customizable and themable open source CMS system for reuse in all web app projects. Mentored an intern through sales and client meetings. Executed marketing and sales responsibilities. Provided maintenance and support. Performed devops duties and automation.
+                  
+                  %p Highlights:
+                  %ul
+                    %li Built a highly customizable and theme-able Rails based Content Management System.
+                    %li Used homebrewed CMS to launch client websites.
+                / //item
+                .item
+                  %h3.title
+                    Web Developer -
+                    %span.place
+                      %a{href: "https://usselfstorage.com/"} Rumbum LLC.
+                    %span.year (2009 - 2010)
+                  
+                  %p Backend/Frontend Web Development.
+                / //item
+                .item
+                  %h3.title
+                    IT Technician -
+                    %span.place
+                      %a{href: "https://usselfstorage.com/"} Port of Everglades, LLC.
+                    %span.year (2007 - 2008)
+                  
+                  %p Developed a mobile app for tracking ingress and egress of truck drivers in the port yard as an improvement of a paper based workflow. Provided IT support for the administrative office in the port. Ran and installed ethernet cabling, solar powered WIFI access points in key location in the port yard, and troubleshooted computer and various device issues. Installed an asset management system and registered all office assets.
+                / //item
+                .item
+                  %h3.title
+                    Systems Administrator -
+                    %span.place
+                      %a{href: "http://www.ltcglobal.com"} LTC Global
+                    %span.year (2006 - 2007)
+                  
+                  %p Install and maintain office network and workstations. Provide IT support to staff.
+                / //item
+                .item
+                  %h3.title
+                    IT Field Technician -
+                    %span.place
+                      Intechcenter
+                    %span.year (2005 - 2006)
+                  
+                  %pTechnical Support, Consulting, Network/Systems Administration, Network Planning and Implementation. Built PCs and servers. Managed office IT responsibilities for multiple private and commercial clients.
+                / //item
+              / //content
+            / //section-inner
+          / //section
+          %section.github.section
+            .section-inner
+              %h2.heading My GitHub
+              %p GitHub Calendar
+              #github-graph.github-graph
+              / //github-graph
+              %p GitHub Activity Stream
+              / //Usage: http://caseyscarborough.com/projects/github-activity/
+              #ghfeed.ghfeed
+              / //ghfeed
+            / //secton-inner
+          / //section
+        / //primary
+        .secondary.col-md-4.col-sm-12.col-xs-12
+          %aside.info.aside.section
+            .section-inner
+              %h2.heading.sr-only Basic Information
+              .content
+                %ul.list-unstyled
+                  %li
+                    %i.fa.fa-map-marker
+                    = succeed "Miami" do
+                      %span.sr-only Location:
+                  %li
+                    %i.fa.fa-envelope-o
+                    %span.sr-only Email:
+                    %a{href: "#"} me@diegosalazar.co
+                  %li
+                    %i.fa.fa-link
+                    %span.sr-only Website:
+                    %a{href: "#"} http://diegosalazar.co
+              / //content
+            / //section-inner
+          / //aside
+          %aside.skills.aside.section
+            .section-inner
+              %h2.heading Skills
+              .content
+                %p.intro
+                  Experienced software developer specializing in web applications and web services.
+                %p Specialties: Backend development, API design, Service Oriented Architecture, large scale web services, server administration. 
+                %hr.divider/
+
+                .skillset
+                  .item
+                    %h3.level-title
+                      Ruby on Rails
+                      %span.level-label{"data-animation" => "true", "data-placement" => "left", "data-toggle" => "tooltip", title: "My Specialty"} Expert
+                    .level-bar
+                      .level-bar-inner{"data-level" => "100%"}
+                    / //level-bar
+                  / //item
+                  .item
+                    %h3.level-title
+                      Javascript/jQuery/React
+                      %span.level-label Expert
+                    .level-bar
+                      .level-bar-inner{"data-level" => "96%"}
+                    / //level-bar
+                  / //item
+                  .item
+                    %h3.level-title
+                      HTML5, CSS3, SASS
+                      %span.level-label Expert
+                    .level-bar
+                      .level-bar-inner{"data-level" => "96%"}
+                    / //level-bar
+                  / //item
+                  .item
+                    %h3.level-title
+                      Python
+                      %span.level-label Pro
+                    .level-bar
+                      .level-bar-inner{"data-level" => "85%"}
+                    / //level-bar
+                  / //item
+                  .item
+                    %h3.level-title
+                      Elixir
+                      %span.level-label Pro
+                    .level-bar
+                      .level-bar-inner{"data-level" => "85%"}
+                    / //level-bar
+                  / //item
+                  .item
+                    %h3.level-title
+                      PostgreSQL, MySQL
+                      %span.level-label Pro
+                    .level-bar
+                      .level-bar-inner{"data-level" => "85%"}
+                    / //level-bar
+                  / //item
+                  %p
+                    %a.more-link{href: "https://www.codewars.com/users/DiegoSalazar", target: "_blank"}
+                      %i.fa.fa-external-link
+                      More on Codewars
+                  %p
+                    %a.more-link{href: "https://coderwall.com/diegosalazar2", target: "_blank"}
+                      %i.fa.fa-external-link
+                      More on Coderwall
+              / //content
+            / //section-inner
+          / //section
+          %aside.testimonials.aside.section
+            .section-inner
+              %h2.heading Testimonials
+              .content
+                .item
+                  %blockquote.quote
+                    %p
+                      %i.fa.fa-quote-left>
+                      Diego was our Technical Support Technican who works well with his clients. He is very reliable and consistent.
+                  %p.source
+                    %span.name Claudette R. Graham, MBA
+                    %br/
+                    %span.title From Linkedin
+                / //item
+                %p
+                  %a.more-link{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank"}
+                    %i.fa.fa-external-link
+                    More on Linkedin
+              / //content
+            / //section-inner
+          / //section
+          %aside.education.aside.section
+            .section-inner
+              %h2.heading Education
+              .content
+                .item
+                  %h3.title
+                    %i.fa.fa-graduation-cap
+                    Mechanical Engineering
+                  %h4.university
+                    Palm Beach College
+                    %span.year (2005-2006)
+                / //item
+                .item
+                  %h3.title
+                    %i.fa.fa-graduation-cap
+                    Autodidact
+                  %h4.university
+                    Google University
+                    %span.year (2005-Present)
+                / //item
+              / //content
+            / //section-inner
+          / //section
+          %aside.languages.aside.section
+            .section-inner
+              %h2.heading Languages
+              .content
+                %ul.list-unstyled
+                  %li.item
+                    %span.title
+                      %strong English:
+                    %span.level
+                      Fluent
+                      %br.visible-xs/
+                      %i.fa.fa-star
+                      %i.fa.fa-star
+                      %i.fa.fa-star
+                      %i.fa.fa-star
+                      %i.fa.fa-star
+                  / //item
+                  %li.item
+                    %span.title
+                      %strong Spanish:
+                    %span.level
+                      Native Speaker
+                      %br.visible-sm.visible-xs/
+                      %i.fa.fa-star
+                      %i.fa.fa-star
+                      %i.fa.fa-star
+                      %i.fa.fa-star-half
+                  / //item
+              / //content
+            / //section-inner
+          / //section
+          
+          / %aside.blog.aside.section
+          /   .section-inner
+          /     %h2.heading Latest Blog Posts
+          /     %p
+          /       You can use Sascha Depold's
+          /       %a{href: "https://github.com/sdepold/jquery-rss", target: "_blank"} jQuery RSS plugin
+          /       to pull in your blog post feeds.
+          /     #rss-feeds.content
+          /     / //content
+          /   / //section-inner
+          / / //section
+          
+          %aside.list.music.aside.section
+            .section-inner
+              %h2.heading Favorite coding music
+              .content
+                %ul.list-unstyled
+                  %li
+                    %i.fa.fa-spotify
+                    %a{href: "https://open.spotify.com/user/deeg0", target: "_blank"} Everything in my Spotify playlists
+              / //content
+            / //section-inner
+          / //section
+          
+          / %aside.list.conferences.aside.section
+          /   .section-inner
+          /     %h2.heading Conferences
+          /     .content
+          /       %ul.list-unstyled
+          /         %li
+          /           %i.fa.fa-calendar
+          /           %a{href: "https://developer.apple.com/wwdc/", target: "_blank"} WWDC 2014
+          /           (San Francisco)
+          /         %li
+          /           %i.fa.fa-calendar
+          /           %a{href: "http://hive.aigaseattle.org/"} Hive
+          /           (Seattle)
+          /     / //content
+          /   / //section-inner
+          / / //section
+          
+          %aside.credits.aside.section
+            .section-inner
+              %h2.heading Credits
+              .content
+                %ul.list-unstyled
+                  %li
+                    %a{href: "http://getbootstrap.com/", target: "_blank"}
+                      %i.fa.fa-external-link
+                      Bootstrap
+                  %li
+                    %a{href: "http://fortawesome.github.io/Font-Awesome/", target: "_blank"}
+                      %i.fa.fa-external-link
+                      FontAwesome
+                  %li
+                    %a{href: "http://jquery.com/", target: "_blank"}
+                      %i.fa.fa-external-link
+                      jQuery
+                  %li
+                    %a{href: "https://github.com/IonicaBizau/github-calendar", target: "_blank"}
+                      %i.fa.fa-external-link
+                      GitHub Calendar Plugin
+                  %li
+                    %a{href: "http://caseyscarborough.com/projects/github-activity/", target: "_blank"}
+                      %i.fa.fa-external-link
+                      GitHub Activity Stream
+                  %li
+                    %a{href: "https://github.com/sdepold/jquery-rss", target: "_blank"}
+                      %i.fa.fa-external-link
+                      jQuery RSS
+                  %li
+                    Profile image:
+                    %a{href: "https://github.com/esouza", target: "_blank"} Eduardo Souza
+                %hr/
+                
+                %a.btn.btn-cta-secondary.btn-follow{href: "https://github.com/DiegoSalazar/", target: "_blank"}
+                  %i.fa.fa-github
+                  Follow me on Github
+
+                %a.btn.btn-cta-primary.btn-download{href: "files/DiegoSalazar.pdf", target: "_blank"}
+                  %i.fa.fa-download
+                  Download My Resumé
+              / //content
+            / //section-inner
+          / //section
+        / //secondary
+      / //row
+    / //masonry
+    / ******FOOTER******
+    %footer.footer
+      .container.text-center
+        / /* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */
+        %small.copyright
+          Designed with
+          %i.fa.fa-heart
+          by
+          %a{href: "http://themes.3rdwavemedia.com", target: "_blank"} Xiaoying Riley
+          for developers
+      / //container
+    / //footer
+    / Javascript
+    %script{src: "plugins/jquery-1.11.3.min.js", type: "text/javascript"}
+    %script{src: "plugins/bootstrap/js/bootstrap.min.js", type: "text/javascript"}
+    %script{src: "plugins/jquery-rss/dist/jquery.rss.min.js", type: "text/javascript"}
+    / github calendar plugin
+    %script{src: "https://cdnjs.buttflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.min.js", type: "text/javascript"}
+    %script{src: "https://cdnjs.buttflare.com/ajax/libs/fetch/0.10.1/fetch.min.js", type: "text/javascript"}
+    %script{src: "plugins/github-calendar/dist/github-calendar.min.js", type: "text/javascript"}
+    / github activity plugin
+    %script{src: "//cdnjs.buttflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js", type: "text/javascript"}
+    %script{src: "plugins/github-activity/src/github-activity.js", type: "text/javascript"}
+    / custom js
+    %script{src: "js/main.js", type: "text/javascript"}
