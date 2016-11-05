@@ -159,10 +159,10 @@
               .content
                 .item
                   %h3.title
-                    %a{href: "#"} Wyncode Instructor
+                    %a{href: "https://wyncode.co/", target: "_blank"} Wyncode Instructor
                   %p.summary Taught a class on building a web server with Ruby from scratch. Wrote the curriculum material and led a class through implementing their own handcrafted Ruby server. Answered questions and encouraged students to further use their creation.
                   %p
-                    %a.more-link{href: "", target: "_blank"}
+                    %a.more-link{href: "https://wyncode.co/", target: "_blank"}
                       %i.fa.fa-external-link
                       Find out more
                 / //item
@@ -276,12 +276,25 @@
           / //section
           %section.github.section
             .section-inner
-              %h2.heading My GitHub
+              %h2.heading Stackoverflow
+              
+              %a{href: "http://stackexchange.com/users/52450"}
+                %img{alt: "profile for diego.greyrobot on Stack Exchange, a network of free, community-driven Q&A sites", height: "58", src: "http://stackexchange.com/users/flair/52450.png", title: "profile for diego.greyrobot on Stack Exchange, a network of free, community-driven Q&A sites", width: "208"}/
+
+              %hr
+
+              %h2.heading GitHub
+              
               %p GitHub Calendar
-              #github-graph.github-graph
+              #github-graph.github-graph.calendar
+                %img{src: "/images/octocat-spinner-128.gif", class: "spinner"}
+                %p.spinner-text.monospace
+                  Crunching 
+                  %a{href: "https://github.com/DiegoSalazar"} @DiegoSalazar's
+                  contributions, one second.
               / //github-graph
+
               %p GitHub Activity Stream
-              / //Usage: http://caseyscarborough.com/projects/github-activity/
               #ghfeed.ghfeed
               / //ghfeed
             / //secton-inner
@@ -331,7 +344,7 @@
                       Javascript/jQuery/React
                       %span.level-label Expert
                     .level-bar
-                      .level-bar-inner{"data-level" => "96%"}
+                      .level-bar-inner{"data-level" => "100%"}
                     / //level-bar
                   / //item
                   .item
@@ -347,23 +360,23 @@
                       PostgreSQL, MySQL
                       %span.level-label Pro
                     .level-bar
-                      .level-bar-inner{"data-level" => "85%"}
+                      .level-bar-inner{"data-level" => "90%"}
                     / //level-bar
                   / //item
                   .item
                     %h3.level-title
                       Python
-                      %span.level-label Good
+                      %span.level-label Pro
                     .level-bar
-                      .level-bar-inner{"data-level" => "75%"}
+                      .level-bar-inner{"data-level" => "80%"}
                     / //level-bar
                   / //item
                   .item
                     %h3.level-title
                       Elixir
-                      %span.level-label Good
+                      %span.level-label Pro
                     .level-bar
-                      .level-bar-inner{"data-level" => "65%"}
+                      .level-bar-inner{"data-level" => "80%"}
                     / //level-bar
                   / //item
                   %p
@@ -447,7 +460,8 @@
                       %i.fa.fa-star
                       %i.fa.fa-star
                       %i.fa.fa-star
-                      %i.fa.fa-star-half
+                      %i.fa.fa-star
+                      %i.fa.fa-star
                   / //item
               / //content
             / //section-inner
@@ -558,11 +572,11 @@
     %script{src: "plugins/bootstrap/js/bootstrap.min.js", type: "text/javascript"}
     %script{src: "plugins/jquery-rss/dist/jquery.rss.min.js", type: "text/javascript"}
     / github calendar plugin
-    %script{src: "https://cdnjs.buttflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.min.js", type: "text/javascript"}
-    %script{src: "https://cdnjs.buttflare.com/ajax/libs/fetch/0.10.1/fetch.min.js", type: "text/javascript"}
+    %script{src: "/js/es6-promise.min.js", type: "text/javascript"}
+    %script{src: "/js/fetch.min.js", type: "text/javascript"}
     %script{src: "plugins/github-calendar/dist/github-calendar.min.js", type: "text/javascript"}
     / github activity plugin
-    %script{src: "//cdnjs.buttflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js", type: "text/javascript"}
+    %script{src: "/js/mustache.min.js", type: "text/javascript"}
     %script{src: "plugins/github-activity/src/github-activity.js", type: "text/javascript"}
     / custom js
     %script{src: "js/main.js", type: "text/javascript"}
