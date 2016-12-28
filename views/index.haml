@@ -41,16 +41,16 @@
           %p.text-muted Pack light, you'll find what you need on the way.
           %ul.social.list-inline
             %li
-              %a{href: "https://twitter.com/mastermindxs", target: "_blank"}
+              %a{href: "https://twitter.com/mastermindxs", target: "_blank", title: "Twitter"}
                 %i.fa.fa-twitter
             %li
-              %a{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank"}
+              %a{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank", title: "LinkedIn"}
                 %i.fa.fa-linkedin
             %li
-              %a{href: "https://github.com/DiegoSalazar/", target: "_blank"}
+              %a{href: "https://github.com/DiegoSalazar/", target: "_blank", title: "Github"}
                 %i.fa.fa-github-alt
             %li.last-item
-              %a{href: "stackoverflow.com/users/156746/diego-greyrobot", target: "_blank"}
+              %a{href: "https://stackoverflow.com/users/156746/diego-greyrobot", target: "_blank", title: "Stackoverflow"}
                 %i.fa.fa-stack-overflow
         / //profile
         %a.btn.btn-cta-primary.pull-right{href: "mailto:me@diegosalazar.co"}
@@ -197,6 +197,8 @@
                     %li Designed and built a high reliability asynchronous API architecture supporting millions of request per second
                     %li Lead hiring, code reviews, and mentoring efforts
 
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -211,6 +213,9 @@
                   %ul
                     %li Designed and built a service oriented framework with asynchronous message passing and message delivery reliability.
                     %li Tasked with frontend and backend engineering projects.
+
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -224,6 +229,9 @@
                   %p Highlights:
                   %ul
                     %li Designed and built a SAAS platform for self storage marketing, search, and booking.
+
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -238,6 +246,9 @@
                   %ul
                     %li Built a highly customizable and theme-able Rails based Content Management System.
                     %li Used homebrewed CMS to launch client websites.
+
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -247,6 +258,9 @@
                     %span.year (2009 - 2010)
                   
                   %p Backend/Frontend Web Development.
+
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -256,6 +270,9 @@
                     %span.year (2007 - 2008)
                   
                   %p Developed a mobile app for tracking ingress and egress of truck drivers in the port yard as an improvement of a paper based workflow. Provided IT support for the administrative office in the port. Ran and installed ethernet cabling, solar powered WIFI access points in key location in the port yard, and troubleshooted computer and various device issues. Installed an asset management system and registered all office assets.
+
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -265,6 +282,9 @@
                     %span.year (2006 - 2007)
                   
                   %p Install and maintain office network and workstations. Provide IT support to staff.
+
+                  %hr
+
                 / //item
                 .item
                   %h3.title
@@ -296,7 +316,6 @@
 
               %h2.heading GitHub
               
-              %p GitHub Calendar
               #github-graph.github-graph.calendar
                 %img{src: "/images/octocat-spinner-128.gif", class: "spinner"}
                 %p.spinner-text.monospace
@@ -305,7 +324,6 @@
                   contributions, one second.
               / //github-graph
 
-              %p GitHub Activity Stream
               #ghfeed.ghfeed
               / //ghfeed
             / //secton-inner
@@ -327,9 +345,14 @@
                     %a{href: "#"} me@diegosalazar.co
                   
                   %li
-                    %a.btn.btn-cta-primary.btn-download{href: "files/DiegoSalazar.pdf", target: "_blank"}
+                    %a.btn.btn-cta-primary.btn-download{href: "files/DiegoSalazar.pdf", target: "_blank", title: "Download my Resumé"}
                       %i.fa.fa-download
                       Download My Resumé
+
+                  %li
+                    %a.btn.btn-cta-secondary.btn-follow{href: "https://github.com/DiegoSalazar/", target: "_blank", title: "Follow me on Github"}
+                      %i.fa.fa-github
+                      Follow me on Github
               / //content
             / //section-inner
           / //aside
@@ -552,11 +575,6 @@
                   %li
                     Profile image:
                     %a{href: "https://github.com/esouza", target: "_blank"} Eduardo Souza
-                %hr/
-                
-                %a.btn.btn-cta-secondary.btn-follow{href: "https://github.com/DiegoSalazar/", target: "_blank"}
-                  %i.fa.fa-github
-                  Follow me on Github
 
               / //content
             / //section-inner
