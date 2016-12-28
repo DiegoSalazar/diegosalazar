@@ -280,10 +280,17 @@
           / //section
           %section.github.section
             .section-inner
+
               %h2.heading Stackoverflow
               
-              %a{href: "http://stackexchange.com/users/52450"}
+              %a{href: "http://stackexchange.com/users/52450", target: "_blank"}
                 %img{alt: "profile for diego.greyrobot on Stack Exchange, a network of free, community-driven Q&A sites", height: "58", src: "http://stackexchange.com/users/flair/52450.png", title: "profile for diego.greyrobot on Stack Exchange, a network of free, community-driven Q&A sites", width: "208"}/
+
+              %hr
+
+              %h2.heading Codewars
+              %a{href: "https://www.codewars.com/users/DiegoSalazar", target: "_blank"}
+                %img{src: "https://www.codewars.com/users/DiegoSalazar/badges/large"}
 
               %hr
 
@@ -294,7 +301,7 @@
                 %img{src: "/images/octocat-spinner-128.gif", class: "spinner"}
                 %p.spinner-text.monospace
                   Crunching 
-                  %a{href: "https://github.com/DiegoSalazar"} @DiegoSalazar's
+                  %a{href: "https://github.com/DiegoSalazar", target: "_blank"} @DiegoSalazar's
                   contributions, one second.
               / //github-graph
 
@@ -318,10 +325,7 @@
                     %i.fa.fa-envelope-o
                     %span.sr-only Email:
                     %a{href: "#"} me@diegosalazar.co
-                  %li
-                    %i.fa.fa-link
-                    %span.sr-only Website:
-                    %a{href: "#"} http://diegosalazar.co
+                  
                   %li
                     %a.btn.btn-cta-primary.btn-download{href: "files/DiegoSalazar.pdf", target: "_blank"}
                       %i.fa.fa-download
