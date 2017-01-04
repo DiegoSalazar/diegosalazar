@@ -38,6 +38,15 @@
 
       ga('create', 'UA-58262815-3', 'auto');
       ga('send', 'pageview');
+
+      function TrackClick(event, cat, label) {
+        ga('send', 'event', {
+          eventCategory: cat || 'Outbound Link',
+          eventAction: 'click',
+          eventLabel: label || 'Interesting Activity',
+          transport: 'beacon'
+        });
+      }
   %body
     %header.header
       .container
@@ -48,19 +57,19 @@
           %p.text-muted Pack light, you'll find what you need on the way.
           %ul.social.list-inline
             %li
-              %a{href: "https://twitter.com/mastermindxs", target: "_blank", title: "Twitter"}
+              %a{href: "https://twitter.com/mastermindxs", target: "_blank", title: "Twitter", onclick: "TrackClick('Social Profile View', 'Twitter')"}
                 %i.fa.fa-twitter
             %li
-              %a{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank", title: "LinkedIn"}
+              %a{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank", title: "LinkedIn", onclick: "TrackClick('Social Profile View', 'LinkedIn')"}
                 %i.fa.fa-linkedin
             %li
-              %a{href: "https://github.com/DiegoSalazar/", target: "_blank", title: "Github"}
+              %a{href: "https://github.com/DiegoSalazar/", target: "_blank", title: "Github", onclick: "TrackClick('Social Profile View', 'Github')"}
                 %i.fa.fa-github-alt
             %li.last-item
-              %a{href: "https://stackoverflow.com/users/156746/diego-greyrobot", target: "_blank", title: "Stackoverflow"}
+              %a{href: "https://stackoverflow.com/users/156746/diego-greyrobot", target: "_blank", title: "Stackoverflow", onclick: "TrackClick('Social Profile View', 'Stackoverflow')"}
                 %i.fa.fa-stack-overflow
         / //profile
-        %a.btn.btn-cta-primary.pull-right{href: "mailto:me@diegosalazar.co"}
+        %a.btn.btn-cta-primary.pull-right{href: "mailto:me@diegosalazar.co", onclick: "TrackClick('Mailto Click', 'me@diegosalazar.co')"}
           %i.fa.fa-paper-plane
           Contact Me
       / //container
@@ -86,78 +95,78 @@
               .content
                 .item.featured.text-center
                   %h3.title
-                    %a{href: "http://diegosalazar.github.io/ConwaysGameOfLife/", target: "_blank"} Conway's Game of Life
+                    %a{href: "http://diegosalazar.github.io/ConwaysGameOfLife/", target: "_blank", onclick: "TrackClick('Portfolio View', 'ConwaysGameOfLife')"} Conway's Game of Life
                   %p.summary An HTML5/Canvas/Javascript implementation of the famous cellular automaton Conway's Game of Life
                   .featured-image
-                    %a{href: "http://diegosalazar.github.io/ConwaysGameOfLife/", target: "_blank"}
+                    %a{href: "http://diegosalazar.github.io/ConwaysGameOfLife/", target: "_blank", onclick: "TrackClick('Portfolio View', 'ConwaysGameOfLife')"}
                       %img.img-responsive.project-image{alt: "Conways's Game of Life", src: "images/projects/conways.png"}/
                   .desc.text-left
                     %p The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
 
                     %p The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
                     
-                    %a{href: "https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life", target: "_blank"} 
+                    %a{href: "https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life", target: "_blank", onclick: "TrackClick('More Info View', 'Conways Wiki')"} 
                       Wikipedia.
                       %i.fa.fa-external-link
                   / //desc
-                  %a.btn.btn-cta-secondary{href: "https://github.com/DiegoSalazar/ConwaysGameOfLife", target: "_blank"}
+                  %a.btn.btn-cta-secondary{href: "https://github.com/DiegoSalazar/ConwaysGameOfLife", target: "_blank", onclick: "TrackClick('Portfolio View', 'ConwaysGameOfLife Star')"}
                     %i.fa.fa-star
                     Star my project
                 / //item
                 %hr.divider/
                 .item.row
-                  %a.col-md-4.col-sm-4.col-xs-12{href: "http://diegosalazar.github.io/CircleWaves/", target: "_blank"}
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "http://diegosalazar.github.io/CircleWaves/", target: "_blank", onclick: "TrackClick('Portfolio View', 'Circle Waves Demo')"}
                     %img.img-responsive.project-image{alt: "Circle Waves", src: "images/projects/circlewaves.png"}/
                   .desc.col-md-8.col-sm-8.col-xs-12
                     %h3.title
-                      %a{href: "http://diegosalazar.github.io/CircleWaves/", target: "_blank"} Circle Waves - A Web Toy
+                      %a{href: "http://diegosalazar.github.io/CircleWaves/", target: "_blank", onclick: "TrackClick('Portfolio View', 'Circle Waves Demo')"} Circle Waves - A Web Toy
                     %p An HTML/Javascript based toy inspired by an entrancing Gif.
                     %p
-                      %a.more-link{href: "https://github.com/DiegoSalazar/CircleWaves", target: "_blank"}
+                      %a.more-link{href: "https://github.com/DiegoSalazar/CircleWaves", target: "_blank", onclick: "TrackClick('Portfolio View', 'Circle Waves Star')"}
                         %i.fa.fa-external-link
                         Star my project
                   / //desc
                 / //item
                 .item.row
-                  %a.col-md-4.col-sm-4.col-xs-12{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank"}
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank", onclick: "TrackClick('Portfolio View', 'DefRetry Github')"}
                     %img.img-responsive.project-image{alt: "Defretry", src: "images/projects/defretry.png"}/
                   .desc.col-md-8.col-sm-8.col-xs-12
                     %h3.title
-                      %a{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank"} Defretry - Method Retry Micro-library
+                      %a{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank", onclick: "TrackClick('Portfolio View', 'DefRetry Github')"} Defretry - Method Retry Micro-library
                     %p Rubygem to add configurable retry logic to methods and blocks of code.
                     %p
-                      %a.more-link{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank"}
+                      %a.more-link{href: "https://github.com/DiegoSalazar/DefRetry", target: "_blank", onclick: "TrackClick('Portfolio View', 'DefRetry Star')"}
                         %i.fa.fa-external-link
                         Star my project
                   / //desc
                 / //item
                 .item.row
-                  %a.col-md-4.col-sm-4.col-xs-12{href: "http://gifantry.herokuapp.com", target: "_blank"}
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "http://gifantry.herokuapp.com", target: "_blank", onclick: "TrackClick('Portfolio View', 'Gifantry Demo')"}
                     %img.img-responsive.project-image{alt: "Gifantry", src: "images/projects/gifantry.png"}/
                   .desc.col-md-8.col-sm-8.col-xs-12
                     %h3.title
-                      %a{href: "http://gifantry.herokuapp.com", target: "_blank"} Gifantry - Personal Image Organizer
+                      %a{href: "http://gifantry.herokuapp.com", target: "_blank", onclick: "TrackClick('Portfolio View', 'Gifantry Demo')"} Gifantry - Personal Image Organizer
                     %p Rails based open source web app that allows bulk upload and categorization/tagging of images and allows full text search and quick direct link copy.
                     %p
-                      %a.more-link{href: "https://github.com/DiegoSalazar/gifantry", target: "_blank"}
+                      %a.more-link{href: "https://github.com/DiegoSalazar/gifantry", target: "_blank", onclick: "TrackClick('Portfolio View', 'Gifantry Star')"}
                         %i.fa.fa-external-link
                         Star my project
                   / //desc
                 / //item
                 .item.row
-                  %a.col-md-4.col-sm-4.col-xs-12{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank"}
+                  %a.col-md-4.col-sm-4.col-xs-12{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank", onclick: "TrackClick('Portfolio View', 'Wordlick Github')"}
                     %img.img-responsive.project-image{alt: "Wordlick", src: "images/projects/wordlick.png"}/
                   .desc.col-md-8.col-sm-8.col-xs-12
                     %h3.title
-                      %a{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank"} Wordlick - Hangman Solver
+                      %a{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank", onclick: "TrackClick('Portfolio View', 'Wordlick Github')"} Wordlick - Hangman Solver
                     %p Solves Hangman. Input already guessed letters of a word and this micro-app will figure out the most likely word solutions.
                     %p
-                      %a.more-link{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank"}
+                      %a.more-link{href: "https://github.com/DiegoSalazar/Wordlick", target: "_blank", onclick: "TrackClick('Portfolio View', 'Wordlick Star')"}
                         %i.fa.fa-external-link
                         Star my project
                   / //desc
                 / //item
-                %a.btn.btn-cta-secondary{href: "https://github.com/DiegoSalazar?tab=repositories&type=source", target: "_blank"}
+                %a.btn.btn-cta-secondary{href: "https://github.com/DiegoSalazar?tab=repositories&type=source", target: "_blank", onclick: "TrackClick('Portfolio View', 'More on Github')"}
                   More on Github
                   %i.fa.fa-chevron-right
               / //content
@@ -170,10 +179,10 @@
               .content
                 .item
                   %h3.title
-                    %a{href: "https://wyncode.co/", target: "_blank"} Wyncode Instructor
+                    %a{href: "https://wyncode.co/", target: "_blank", onclick: "TrackClick('Portfolio View', 'Wyncode')"} Wyncode Instructor
                   %p.summary Taught a class on building a web server with Ruby from scratch. Wrote the curriculum material and led a class through implementing their own handcrafted Ruby server. Answered questions and encouraged students to further use their creation.
                   %p
-                    %a.more-link{href: "https://wyncode.co/", target: "_blank"}
+                    %a.more-link{href: "https://wyncode.co/", target: "_blank", onclick: "TrackClick('Volunteering View', 'Wyncode')"}
                       %i.fa.fa-external-link
                       Find out more
                 / //item
@@ -192,7 +201,7 @@
                   %h3.title
                     Vice President of Engineering -
                     %span.place
-                      %a{href: "http://kipusystems.com/", target: "_blank"} Kipu Systems
+                      %a{href: "http://kipusystems.com/", target: "_blank", onclick: "TrackClick('Experience View', 'Kipu Systems')"} Kipu Systems
                     %span.year (2013 - Present)
                   
                   %p Kipu Systems is a SAAS based medical software company specializing in EMR and lab integrations where I lead a team of software engineers and liaise with other departments and third parties. I am the goto senior engineer for programming help and questions for the team. I consult the CTO on software related challenges. I am a lead architect on software projects. I improve collaboration and planning by researching and applying appropriate tools and processes. I mentor junior engineers and conduct code reviews and pair programming sessions. I'm in charge of technical interviews and have a final say on hiring. I plan sprints, improve documentation and the onboarding process for new hires.
@@ -211,7 +220,7 @@
                   %h3.title
                     Senior Software Engineer -
                     %span.place
-                      %a{href: "http://www.1sale.com/", target: "_blank"} Octagon Commerce
+                      %a{href: "http://www.1sale.com/", target: "_blank", onclick: "TrackClick('Experience View', '1Sale')"} Octagon Commerce
                     %span.year (2011 - 2013)
                   
                   %p Architected a fault tolerant service oriented architecture framework. Lead internal software projects and pair programmed through feature development. Developed and maintained user facing features as well as internal apps. Was on standby for emergency situations and successfully debugged and fixed live production code on multiple occasions. Improved and refactored legacy code and tests. Presented research projects to the team to evangelize state of the art techniques and paradigms.
@@ -228,7 +237,7 @@
                   %h3.title
                     Founding Engineer -
                     %span.place
-                      %a{href: "https://usselfstorage.com/"} US Self Storage Locator
+                      %a{href: "https://usselfstorage.com/", onclick: "TrackClick('Experience View', 'USSelfStorage')"} US Self Storage Locator
                     %span.year (2010 - 2011)
                   
                   %p Architected an application framework from the ground up. Lead development of a new business. Created platform for admins, site owners, and users to efficiently search for and rent self storage units. Lead marketing efforts and provided direction on all matters of development and marketing in a startup environment. Setup office network with Active Directory and installed computes, a server, and backups.
@@ -244,7 +253,7 @@
                   %h3.title
                     Founding Engineer -
                     %span.place
-                      %a{href: "https://usselfstorage.com/"} Grey Robot Inc.
+                      %a{href: "https://greyrobot.com/", onclick: "TrackClick('Experience View', 'Greyrobot')"} Grey Robot Inc.
                     %span.year (2009 - 2011)
                   
                   %p Started as a freelancer and then teamed up with my brother and a friend to develop apps for businesses. Provided website and web app development services to small businesses and professionals. Developed a customizable and themable open source CMS system for reuse in all web app projects. Mentored an intern through sales and client meetings. Executed marketing and sales responsibilities. Provided maintenance and support. Performed devops duties and automation.
@@ -261,7 +270,7 @@
                   %h3.title
                     Web Developer -
                     %span.place
-                      %a{href: "https://usselfstorage.com/"} Rumbum LLC.
+                      %a{href: "https://rumbum.com/", onclick: "TrackClick('Experience View', 'Rumbum')"} Rumbum LLC.
                     %span.year (2009 - 2010)
                   
                   %p Backend/Frontend Web Development.
@@ -273,7 +282,7 @@
                   %h3.title
                     IT Technician -
                     %span.place
-                      %a{href: "https://usselfstorage.com/"} Port of Everglades, LLC.
+                      %a{href: "https://www.porteverglades.net/", onclick: "TrackClick('Experience View', 'Port Everglades')"} Port of Everglades, LLC.
                     %span.year (2007 - 2008)
                   
                   %p Developed a mobile app for tracking ingress and egress of truck drivers in the port yard as an improvement of a paper based workflow. Provided IT support for the administrative office in the port. Ran and installed ethernet cabling, solar powered WIFI access points in key location in the port yard, and troubleshooted computer and various device issues. Installed an asset management system and registered all office assets.
@@ -285,7 +294,7 @@
                   %h3.title
                     Systems Administrator -
                     %span.place
-                      %a{href: "http://www.ltcglobal.com"} LTC Global
+                      %a{href: "http://www.ltcglobal.com", onclick: "TrackClick('Experience View', 'LTC Global')"} LTC Global
                     %span.year (2006 - 2007)
                   
                   %p Install and maintain office network and workstations. Provide IT support to staff.
@@ -310,13 +319,13 @@
 
               %h2.heading Stackoverflow
               
-              %a{href: "http://stackexchange.com/users/52450", target: "_blank"}
+              %a{href: "http://stackexchange.com/users/52450", target: "_blank", onclick: "TrackClick('Social Profile View', 'Stackoverflow')"}
                 %img{alt: "profile for diego.greyrobot on Stack Exchange, a network of free, community-driven Q&A sites", height: "58", src: "http://stackexchange.com/users/flair/52450.png", title: "profile for diego.greyrobot on Stack Exchange, a network of free, community-driven Q&A sites", width: "208"}/
 
               %hr
 
               %h2.heading Codewars
-              %a{href: "https://www.codewars.com/users/DiegoSalazar", target: "_blank"}
+              %a{href: "https://www.codewars.com/users/DiegoSalazar", target: "_blank", onclick: "TrackClick('Social Profile View', 'Codewars')"}
                 %img{src: "https://www.codewars.com/users/DiegoSalazar/badges/large"}
 
               %hr
@@ -327,7 +336,7 @@
                 %img{src: "/images/octocat-spinner-128.gif", class: "spinner"}
                 %p.spinner-text.monospace
                   Crunching 
-                  %a{href: "https://github.com/DiegoSalazar", target: "_blank"} @DiegoSalazar's
+                  %a{href: "https://github.com/DiegoSalazar", target: "_blank", onclick: "TrackClick('Social Profile View', 'Github')"} @DiegoSalazar's
                   contributions, one second.
               / //github-graph
 
@@ -352,12 +361,12 @@
                     %a{href: "#"} me@diegosalazar.co
                   
                   %li
-                    %a.btn.btn-cta-primary.btn-download{href: "files/DiegoSalazar.pdf", target: "_blank", title: "Download my Resumé"}
+                    %a.btn.btn-cta-primary.btn-download{href: "files/DiegoSalazar.pdf", target: "_blank", title: "Download my Resumé", onclick: "TrackClick('Resume View', 'PDF Resume')"}
                       %i.fa.fa-download
                       Download My Resumé
 
                   %li
-                    %a.btn.btn-cta-secondary.btn-follow{href: "https://github.com/DiegoSalazar/", target: "_blank", title: "Follow me on Github"}
+                    %a.btn.btn-cta-secondary.btn-follow{href: "https://github.com/DiegoSalazar/", target: "_blank", title: "Follow me on Github", onclick: "TrackClick('Social Profile View', 'Github')"}
                       %i.fa.fa-github
                       Follow me on Github
               / //content
@@ -422,11 +431,11 @@
                     / //level-bar
                   / //item
                   %p
-                    %a.more-link{href: "https://www.codewars.com/users/DiegoSalazar", target: "_blank"}
+                    %a.more-link{href: "https://www.codewars.com/users/DiegoSalazar", target: "_blank", onclick: "TrackClick('Social Profile View', 'Codewars')"}
                       %i.fa.fa-external-link
                       More on Codewars
                   %p
-                    %a.more-link{href: "https://coderwall.com/diegosalazar2", target: "_blank"}
+                    %a.more-link{href: "https://coderwall.com/diegosalazar2", target: "_blank", onclick: "TrackClick('Social Profile View', 'Coderwall')"}
                       %i.fa.fa-external-link
                       More on Coderwall
               / //content
@@ -447,7 +456,7 @@
                     %span.title From Linkedin
                 / //item
                 %p
-                  %a.more-link{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank"}
+                  %a.more-link{href: "https://www.linkedin.com/in/diegoesalazar", target: "_blank", onclick: "TrackClick('Social Profile View', 'LinkedIn')"}
                     %i.fa.fa-external-link
                     More on Linkedin
               / //content
@@ -528,7 +537,7 @@
                 %ul.list-unstyled
                   %li
                     %i.fa.fa-spotify
-                    %a{href: "https://open.spotify.com/user/deeg0", target: "_blank"} Everything in my Spotify playlists
+                    %a{href: "https://open.spotify.com/user/deeg0", target: "_blank", onclick: "TrackClick('Social Profile View', 'Spotify')"} Everything in my Spotify playlists
               / //content
             / //section-inner
           / //section
