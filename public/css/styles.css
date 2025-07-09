@@ -7,10 +7,14 @@
  * Website: http://themes.3rdwavemedia.com/
 */
 /* ======= Base ======= */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Lato', arial, sans-serif;
-  color: #434343;
-  background: #DAE3E7;
+  color: #212529; /* Updated body text color */
+  background: #f8f9fa; /* Updated body background */
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,10 +27,10 @@ h5,
 h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #778492;
+  color: #343a40; /* Updated heading color */
 }
 a {
-  color: #3AAA64;
+  color: #0d6efd; /* Updated link color */
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -34,8 +38,7 @@ a {
 }
 a:hover {
   text-decoration: underline;
-  color: #5f6b77;
-  color: #2d844e;
+  color: #0b5ed7; /* Darker shade of primary blue */
 }
 a:focus {
   text-decoration: none;
@@ -60,37 +63,37 @@ a.btn:focus {
 }
 a.btn-cta-primary,
 .btn-cta-primary {
-  background: #54ba4e;
-  border: 1px solid #54ba4e;
+  background: #198754; /* Updated BS Success Green */
+  border: 1px solid #198754; /* Updated BS Success Green */
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
 }
 a.btn-cta-primary:hover,
 .btn-cta-primary:hover {
-  background: #49ac43;
-  border: 1px solid #49ac43;
+  background: #157347; /* Darker shade of BS Success Green */
+  border: 1px solid #146c43; /* Darker shade of BS Success Green */
   color: #fff;
 }
 a.btn-cta-secondary,
 .btn-cta-secondary {
-  background: #479FC8;
-  border: 1px solid #479FC8;
+  background: #0d6efd; /* Updated BS Primary Blue */
+  border: 1px solid #0d6efd; /* Updated BS Primary Blue */
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
 }
 a.btn-cta-secondary:hover,
 .btn-cta-secondary:hover {
-  background: #3893bd;
-  border: 1px solid #3893bd;
+  background: #0b5ed7; /* Darker shade of BS Primary Blue */
+  border: 1px solid #0a58ca; /* Darker shade of BS Primary Blue */
   color: #fff;
 }
 .text-highlight {
   color: #32383e;
 }
 .label-theme {
-  background: #3AAA64;
+  background: #198754; /* Updated BS Success Green */
   font-size: 12px;
 }
 a.dotted-link {
@@ -175,11 +178,13 @@ iframe {
 .section .section-inner {
   background: #fff;
   padding: 30px;
+  border-radius: 0.375rem; /* Bootstrap 5's default border-radius for cards etc. */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
 }
 .section .heading {
   margin-top: 0;
   margin-bottom: 30px;
-  color: #545e69;
+  color: #343a40; /* Updated section heading color */
   font-size: 24px;
 }
 .section .content .more-link .fa {
@@ -374,14 +379,6 @@ iframe {
   position: absolute;
   right: 0;
   top: 0;
-}
-.skills .skillset .level-bar {
-  height: 15px;
-  background: #e8e8e8;
-}
-.skills .skillset .level-bar-inner {
-  height: 15px;
-  background: #66cb8c;
 }
 /* Testimonials section */
 .testimonials .item {
