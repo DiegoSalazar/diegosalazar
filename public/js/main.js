@@ -1,58 +1,31 @@
-jQuery(document).ready(function($) {
-
+document.addEventListener('DOMContentLoaded', function() {
 
     /*======= Skillset *=======*/
-    
-    $('.level-bar-inner').css('width', '0');
-    
-    $(window).on('load', function() {
+    // The progress bars are now set to their width via inline style in HAML.
+    // A CSS transition can be added for a visual effect if desired,
+    // for example, by setting initial width to 0 via CSS and then transitioning.
+    // For now, removing the JS-based animation.
+    // If animation is desired:
+    // const progressBars = document.querySelectorAll('.progress-bar');
+    // progressBars.forEach(bar => {
+    //   const targetWidth = bar.dataset.level;
+    //   bar.style.width = '0%'; // Ensure it starts at 0 if not set by CSS
+    //   setTimeout(() => { // Timeout to allow rendering before transition
+    //     bar.style.width = targetWidth;
+    //   }, 100);
+    // });
 
-        $('.level-bar-inner').each(function() {
-        
-            var itemWidth = $(this).data('level');
-            
-            $(this).animate({
-                width: itemWidth
-            }, 800);
-            
-        });
-
+    /* Bootstrap Tooltip Initialization */
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl, {
+        animation: tooltipTriggerEl.dataset.bsAnimation === 'true' // Handle data-bs-animation
+      });
     });
     
-    /* Bootstrap Tooltip for Skillset */
-    $('.level-label').tooltip();
-    
-    
     /* jQuery RSS - https://github.com/sdepold/jquery-rss */
-    
-    $("#rss-feeds").rss(
-    
-        //Change this to your own rss feeds
-        "http://feeds.feedburner.com/TechCrunch/startups",
-        
-        {
-        // how many entries do you want?
-        // default: 4
-        // valid values: any integer
-        limit: 3,
-        
-        // the effect, which is used to let the entries appear
-        // default: 'show'
-        // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
-        effect: 'slideFastSynced',
-        
-        // outer template for the html transformation
-        // default: "<ul>{entries}</ul>"
-        // valid values: any string
-        layoutTemplate: "<div class='item'>{entries}</div>",
-        
-        // inner template for each entry
-        // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
-        // valid values: any string
-        entryTemplate: '<h3 class="title"><a href="{url}" target="_blank">{title}</a></h3><div><p>{shortBodyPlain}</p><a class="more-link" href="{url}" target="_blank"><i class="fa fa-external-link"></i>Read more</a></div>'
-        
-        }
-    );
+    // This section has been removed as the RSS feed is commented out in HTML
+    // and we are removing jQuery dependency.
     
     /* Github Calendar - https://github.com/IonicaBizau/github-calendar */
     GitHubCalendar(".calendar", "DiegoSalazar");
