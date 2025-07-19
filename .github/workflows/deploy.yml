@@ -69,12 +69,12 @@ jobs:
           terraform_version: 1.5.0
 
       - name: Terraform Init
-        run: terraform -chdir=./terraform init
+        run: terraform -chdir=./terraform init -var="domain_name=${{ vars.DOMAIN_NAME }}"
 
       - name: Import Resources (Manual Step)
         run: |
-            terraform -chdir=./terraform import aws_s3_bucket.site diegosalazar.co
+            terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
       - name: Terraform Plan and Apply (after import)
         run: |
-          terraform -chdir=./terraform plan
-          terraform -chdir=./terraform apply -auto-approve
+          terraform -chdir=./terraform plan -var="domain_name=${{ vars.DOMAIN_NAME }}"
+          terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ vars.DOMAIN_NAME }}"
