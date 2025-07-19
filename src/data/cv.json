@@ -5,6 +5,7 @@
     "image": "assets/images/profile.jpg",
     "email": "me@diegosalazar.co",
     "url": "https://diegosalazar.co",
+    "tagline": "Pack light, you'll find what you need on the way.",
     "summary": "Passionate about code quality, style, and maintainability. I enjoy teaching, playing music, and riding bikes. I started writing code back in the MySpace days (2006) tweaking HTML/CSS. In my job as an IT tech I realized a paper based method of record keeping could be made more efficient and less error prone if I created an app for it. I sat down to read a few chapters of PHP/MySQL and realized I was a natural at understanding code and logic. I fell in love with building apps and taught myself enough to get hired professionally as a web developer. I continued soaking up books, articles, documentation, and QAs to get to where I am today. Now, I specialize in complex multi-process systems in service oriented architectures. I'm proficient in migrating monolithic Rails apps to hybrid service oriented designs. I write developer tools for automation and productivity. I enthusiastically talk about code and mentor coworkers and juniors. I love conversing about science and I'll talk about the universe for hours.",
     "location": {
       "city": "New York",
@@ -29,7 +30,29 @@
       {
         "network": "Stack Overflow",
         "username": "diego-greyrobot",
-        "url": "https://stackoverflow.com/users/156746/diego-greyrobot"
+        "url": "https://stackoverflow.com/users/156746/diego-greyrobot",
+        "flair": "http://stackexchange.com/users/flair/52450.png"
+      },
+      {
+        "network": "Codewars",
+        "username": "DiegoSalazar",
+        "url": "https://www.codewars.com/users/DiegoSalazar",
+        "badge": "https://www.codewars.com/users/DiegoSalazar/badges/large"
+      },
+      {
+        "network": "Coderwall",
+        "username": "diegosalazar2",
+        "url": "https://coderwall.com/diegosalazar2"
+      },
+      {
+        "network": "StackShare",
+        "username": "DiegoSalazar",
+        "url": "https://stackshare.io/DiegoSalazar/diegosalazar-co"
+      },
+      {
+        "network": "Spotify",
+        "username": "deeg0",
+        "url": "https://open.spotify.com/user/deeg0"
       }
     ]
   },
@@ -188,32 +211,35 @@
       "githubUrl": "https://github.com/DiegoSalazar/Wordlick"
     }
   ],
-  "skills": [
-    {
-      "name": "Ruby on Rails",
-      "level": "Expert"
-    },
-    {
-      "name": "Javascript/Node/Vue",
-      "level": "Expert"
-    },
-    {
-      "name": "HTML5, CSS3, SASS",
-      "level": "Expert"
-    },
-    {
-      "name": "PostgreSQL, MySQL",
-      "level": "Pro"
-    },
-    {
-      "name": "Python",
-      "level": "Pro"
-    },
-    {
-      "name": "Elixir",
-      "level": "Pro"
-    }
-  ],
+  "skills": {
+    "summary": "Experienced software developer specializing in web applications and web services. Specialties: Backend development, API design, Service Oriented Architecture, large scale web services, server administration.",
+    "sets": [
+      {
+        "name": "Ruby on Rails",
+        "level": "Expert"
+      },
+      {
+        "name": "Javascript/Node/Vue",
+        "level": "Expert"
+      },
+      {
+        "name": "HTML5, CSS3, SASS",
+        "level": "Expert"
+      },
+      {
+        "name": "PostgreSQL, MySQL",
+        "level": "Pro"
+      },
+      {
+        "name": "Python",
+        "level": "Pro"
+      },
+      {
+        "name": "Elixir",
+        "level": "Pro"
+      }
+    ]
+  },
   "languages": [
     {
       "language": "English",
@@ -270,5 +296,18 @@
       "reference": "Diego is a smart and talented Engineer. At Kipu Health, he was one of the few Engineers I could talk to about shared interest in things like open source, new programming languages, and hobby projects. He also may very well be the best Ruby/Rails Engineer I have ever met. He was a good team leader that showed a lot of patience with Juniors or people new to the project. He was the type of leader that would gladly guide you to the answer but would never hand it to you very easily.",
       "title": "Software Engineer at Kipu Health"
     }
-  ]
+  ],
+  "meta": {
+    "resumeUrl": "files/DiegoSalazar-Resume.pdf",
+    "credits": [
+      {
+        "name": "Profile image by Eduardo Souza",
+        "url": "https://github.com/esouza"
+      },
+      {
+        "name": "Theme by Xiaoying Riley",
+        "url": "https://themes.3rdwavemedia.com"
+      }
+    ]
+  }
 }

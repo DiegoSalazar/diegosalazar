@@ -1,4 +1,0 @@
-namespace :diegosalazar do
-  
-  
-end

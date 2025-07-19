@@ -19,6 +19,8 @@ html(lang="en" class="dark")
           img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg")
           h1(class="text-4xl md:text-6xl font-bold tracking-tighter")= cv.basics.name
           h2(class="text-xl md:text-2xl text-gray-400 mt-2")= cv.basics.label
+          if cv.basics.tagline
+            p(class="text-lg text-gray-500 mt-4 italic")= cv.basics.tagline
           nav(class="mt-8 flex flex-wrap justify-center gap-4")
             a(href="#about" class="text-gray-300 hover:text-white transition-colors px-3 py-1") About
             a(href="#projects" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Projects
@@ -41,10 +43,10 @@ html(lang="en" class="dark")
           h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12 text-center") Projects
           div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8")
             each project in cv.projects
-              div(class="bg-gray-800 rounded-lg overflow-hidden transform transition-transform hover:scale-105 shadow-lg")
+              div(class="bg-gray-800 rounded-lg overflow-hidden transform transition-transform hover:scale-105 shadow-lg flex flex-col")
                 if project.images && project.images.length > 0
                   img(src=project.images[0], alt=project.name, class="w-full h-48 object-cover")
-                div(class="p-6")
+                div(class="p-6 flex flex-col flex-grow")
                   h3(class="text-xl font-bold")= project.name
                   p(class="text-gray-400 mt-2 flex-grow")= project.summary
                   div(class="mt-4")
@@ -73,11 +75,21 @@ html(lang="en" class="dark")
 
       //- Skills Section
       section#skills(class="py-20")
-        div(class="max-w-4xl mx-auto")
-          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12 text-center") Skills
+        div(class="max-w-4xl mx-auto text-center")
+          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12") Skills
+          if cv.skills.summary
+            p(class="prose prose-invert prose-lg max-w-none text-center mb-8")= cv.skills.summary
           div(class="flex flex-wrap justify-center gap-4")
-            each skill in cv.skills
+            each skill in cv.skills.sets
               span(class="bg-gray-700 text-white px-4 py-2 rounded-full text-lg")= skill.name
+          div(class="mt-12 flex flex-wrap justify-center items-center gap-8")
+            each profile in cv.basics.profiles
+              if profile.network === 'Stack Overflow' && profile.flair
+                a(href=profile.url, target="_blank")
+                  img(src=profile.flair, alt="Stack Overflow Flair")
+              if profile.network === 'Codewars' && profile.badge
+                a(href=profile.url, target="_blank")
+                  img(src=profile.badge, alt="Codewars Badge")
 
       //- Testimonials Section
       section#testimonials(class="py-20")
@@ -98,20 +110,31 @@ html(lang="en" class="dark")
       div(class="container mx-auto px-6")
         h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") Get in Touch
         p(class="text-lg text-gray-400 mb-8") You can reach me via email or find me on social media.
-        a(href=`mailto:${cv.basics.email}`, class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg") Email Me
+        if cv.meta.resumeUrl
+          a(href=cv.meta.resumeUrl, target="_blank", class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg inline-block mb-8") Download Resume
         div(class="flex justify-center gap-6 mt-8")
           each profile in cv.basics.profiles
             a(href=profile.url, target="_blank", rel="noopener noreferrer", class="text-gray-400 hover:text-white transition-colors text-2xl")
               if profile.network.toLowerCase() === 'github'
-                i.fab.fa-github
+                i(class="fab fa-github")
               else if profile.network.toLowerCase() === 'linkedin'
-                i.fab.fa-linkedin
+                i(class="fab fa-linkedin")
               else if profile.network.toLowerCase() === 'twitter'
-                i.fab.fa-twitter
+                i(class="fab fa-twitter")
               else if profile.network.toLowerCase() === 'stack overflow'
-                i.fab.fa-stack-overflow
+                i(class="fab fa-stack-overflow")
+              else if profile.network.toLowerCase() === 'spotify'
+                i(class="fab fa-spotify")
               else
                 span= profile.network
+        if cv.meta.credits
+          div(class="text-sm text-gray-600 mt-12")
+            each credit in cv.meta.credits
+              span.px-2
+                if credit.url
+                  a(href=credit.url, target="_blank", class="hover:underline")= credit.name
+                else
+                  = credit.name
     
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
