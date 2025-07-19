@@ -14,7 +14,7 @@ terraform {
 }
 
 resource "aws_s3_bucket_versioning" "site_versioning" {
-  bucket = aws_s3_bucket.site.id
+  bucket = data.aws_s3_bucket.site.id
   versioning_configuration {
     status = "Enabled"
   }
@@ -28,12 +28,12 @@ variable "domain_name" {
   type = string
 }
 
-# resource "aws_s3_bucket" "site" {
-#   bucket = var.domain_name
-# }
+data "aws_s3_bucket" "site" {
+  bucket = var.domain_name
+}
 
 resource "aws_s3_bucket_public_access_block" "site" {
-  bucket = aws_s3_bucket.site.id
+  bucket = data.aws_s3_bucket.site.id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -46,7 +46,7 @@ resource "aws_cloudfront_origin_access_identity" "oai" {
 }
 
 resource "aws_s3_bucket_policy" "site" {
-  bucket = aws_s3_bucket.site.id
+  bucket = data.aws_s3_bucket.site.id
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -56,7 +56,7 @@ resource "aws_s3_bucket_policy" "site" {
           AWS = aws_cloudfront_origin_access_identity.oai.iam_arn
         }
         Action   = "s3:GetObject"
-        Resource = "${aws_s3_bucket.site.arn}/*"
+        Resource = "${data.aws_s3_bucket.site.arn}/*"
       }
     ]
   })
@@ -64,7 +64,7 @@ resource "aws_s3_bucket_policy" "site" {
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = aws_s3_bucket.site.bucket_regional_domain_name
+    domain_name = data.aws_s3_bucket.site.bucket_regional_domain_name
     origin_id   = "S3-${var.domain_name}"
 
     s3_origin_config {
