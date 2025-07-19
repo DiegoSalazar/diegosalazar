@@ -5,6 +5,19 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  backend "s3" {
+    bucket = var.domain_name
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "site_versioning" {
+  bucket = aws_s3_bucket.site.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 provider "aws" {
