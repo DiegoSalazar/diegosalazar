@@ -89,9 +89,9 @@ jobs:
 
       - name: Import Resources (Manual Step)
         run: |
-          terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
-          terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_versioning.site_versioning ${{ vars.DOMAIN_NAME }}
-          terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_public_access_block.site ${{ vars.DOMAIN_NAME }}
+          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
+          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_versioning.site_versioning ${{ vars.DOMAIN_NAME }}
+          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_public_access_block.site ${{ vars.DOMAIN_NAME }}
           # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_cloudfront_origin_access_identity.oai E2FFAEUQUL5V2U
           terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_policy.site ${{ vars.DOMAIN_NAME }}
           terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_cloudfront_distribution.s3_distribution E3IFWLA43CYHKX
