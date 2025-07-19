@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: aws-deploy
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -41,7 +42,7 @@ jobs:
         run: terraform -chdir=./terraform init
 
       - name: Terraform Apply
-        run: terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ secrets.DOMAIN_NAME }}"
+        run: terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ vars.DOMAIN_NAME }}"
 
       - name: Sync files to S3
-        run: aws s3 sync ./dist s3://${{ secrets.DOMAIN_NAME }} --delete
+        run: aws s3 sync ./dist s3://${{ vars.DOMAIN_NAME }} --delete

@@ -88,9 +88,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   price_class = "PriceClass_100" # Use only North America and Europe
 
   viewer_certificate {
-    # This assumes you have a certificate in AWS Certificate Manager (ACM)
-    # for your domain name in the us-east-1 region.
-    acm_certificate_arn = "arn:aws:acm:us-east-1:YOUR_AWS_ACCOUNT_ID:certificate/YOUR_CERTIFICATE_ID"
+    acm_certificate_arn = "arn:aws:acm:us-east-1:164254762356:certificate/dfd030b5-04fe-49b8-a5af-ca1ba7cec0a0"
     ssl_support_method  = "sni-only"
   }
 
