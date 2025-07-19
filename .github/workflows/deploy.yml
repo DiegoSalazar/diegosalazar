@@ -52,7 +52,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: aws-deploy
     needs: [] # This job can run independently
-    if: github.event_name == 'workflow_dispatch' # Only run on manual trigger
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
