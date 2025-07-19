@@ -28,9 +28,9 @@ variable "domain_name" {
   type = string
 }
 
-resource "aws_s3_bucket" "site" {
-  bucket = var.domain_name
-}
+# resource "aws_s3_bucket" "site" {
+#   bucket = var.domain_name
+# }
 
 resource "aws_s3_bucket_public_access_block" "site" {
   bucket = aws_s3_bucket.site.id
