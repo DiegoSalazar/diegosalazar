@@ -25,8 +25,7 @@ provider "aws" {
 }
 
 variable "domain_name" {
-  description = "The domain name for the website (e.g., diegosalazar.com)"
-  type        = string
+  type = string
 }
 
 resource "aws_s3_bucket" "site" {
