@@ -76,8 +76,9 @@ jobs:
           echo "This step requires manual import commands for each resource."
           echo "You will need to find the actual IDs of your existing AWS resources."
           echo "After importing all resources, run 'terraform -chdir=./terraform plan' and 'terraform -chdir=./terraform apply -auto-approve' to push the state to S3."
-          # Uncomment and fill in the actual IDs for your existing AWS resources:
-          terraform -chdir=./terraform import aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
+
+            terraform -chdir=./terraform import aws_s3_bucket.site diegosalazar.co
+
           # terraform -chdir=./terraform import aws_s3_bucket_versioning.site_versioning ${{ vars.DOMAIN_NAME }}
           # terraform -chdir=./terraform import aws_s3_bucket_public_access_block.site ${{ vars.DOMAIN_NAME }}
           # terraform -chdir=./terraform import aws_cloudfront_origin_access_identity.oai YOUR_CLOUDFRONT_OAI_ID
