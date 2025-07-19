@@ -55,7 +55,7 @@ html(lang="en" class="dark")
                     ul(class="list-disc list-inside mt-2 text-gray-300")
                       each highlight in job.highlights
                         li= highlight
-          
+
           //- Projects Section
           section#projects(class="mt-20")
             h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12") Personal Projects
@@ -104,7 +104,7 @@ html(lang="en" class="dark")
                 if profile.network === 'Codewars' && profile.badge
                   a(href=profile.url, target="_blank")
                     img(src=profile.badge, alt="Codewars Badge")
-          
+
           //- Education
           section#education(class="mt-12")
             h2(class="text-2xl font-bold tracking-tight mb-6") Education
@@ -130,21 +130,10 @@ html(lang="en" class="dark")
         p(class="text-lg text-gray-400 mb-8") You can reach me via email or find me on social media.
         if cv.meta.resumeUrl
           a(href=cv.meta.resumeUrl, target="_blank", class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg inline-block mb-8") Download Resume
-        div(class="flex justify-center gap-6 mt-8")
+        div(class="flex justify-center gap-6 mt- flex-wrap")
           each profile in cv.basics.profiles
             a(href=profile.url, target="_blank", rel="noopener noreferrer", class="text-gray-400 hover:text-white transition-colors text-2xl")
-              if profile.network.toLowerCase() === 'github'
-                i(class="fab fa-github")
-              else if profile.network.toLowerCase() === 'linkedin'
-                i(class="fab fa-linkedin")
-              else if profile.network.toLowerCase() === 'twitter'
-                i(class="fab fa-twitter")
-              else if profile.network.toLowerCase() === 'stack overflow'
-                i(class="fab fa-stack-overflow")
-              else if profile.network.toLowerCase() === 'spotify'
-                i(class="fab fa-spotify")
-              else
-                span= profile.network
+              i(class="fab fa-#{profile.iconMame}")= profile.network
         if cv.meta.credits
           div(class="text-sm text-gray-600 mt-12")
             each credit in cv.meta.credits
@@ -153,6 +142,6 @@ html(lang="en" class="dark")
                   a(href=credit.url, target="_blank", class="hover:underline")= credit.name
                 else
                   = credit.name
-    
+
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")

@@ -14,43 +14,51 @@
     "profiles": [
       {
         "network": "Twitter",
+        "icon-name": "twitter",
         "username": "mastermindxs",
         "url": "https://twitter.com/mastermindxs"
       },
       {
         "network": "LinkedIn",
+        "icon-name": "linkedin",
         "username": "diegoesalazar",
         "url": "https://www.linkedin.com/in/diegoesalazar"
       },
       {
         "network": "GitHub",
+        "iconName": "gitHub",
         "username": "DiegoSalazar",
         "url": "https://github.com/DiegoSalazar/"
       },
       {
         "network": "Stack Overflow",
+        "iconName": "stack-overflow",
         "username": "diego-greyrobot",
         "url": "https://stackoverflow.com/users/156746/diego-greyrobot",
         "flair": "http://stackexchange.com/users/flair/52450.png"
       },
       {
         "network": "Codewars",
+        "iconName": "codewars",
         "username": "DiegoSalazar",
         "url": "https://www.codewars.com/users/DiegoSalazar",
         "badge": "https://www.codewars.com/users/DiegoSalazar/badges/large"
       },
       {
         "network": "Coderwall",
+        "iconName": "coderwall",
         "username": "diegosalazar2",
         "url": "https://coderwall.com/diegosalazar2"
       },
       {
         "network": "StackShare",
+        "iconName": "stackshare",
         "username": "DiegoSalazar",
         "url": "https://stackshare.io/DiegoSalazar/diegosalazar-co"
       },
       {
         "network": "Spotify",
+        "iconName": "spotify",
         "username": "deeg0",
         "url": "https://open.spotify.com/user/deeg0"
       }
