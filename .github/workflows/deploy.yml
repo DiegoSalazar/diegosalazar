@@ -47,3 +47,47 @@ jobs:
 
       - name: Sync files to S3
         run: aws s3 sync ./dist s3://${{ vars.DOMAIN_NAME }} --delete
+
+  import-terraform-state:
+    runs-on: ubuntu-latest
+    environment: aws-deploy
+    needs: [] # This job can run independently
+    if: github.event_name == 'workflow_dispatch' # Only run on manual trigger
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init
+        run: terraform -chdir=./terraform init
+
+      - name: Import Resources (Manual Step)
+        run: |
+          echo "This step requires manual import commands for each resource."
+          echo "You will need to find the actual IDs of your existing AWS resources."
+          echo "After importing all resources, run 'terraform -chdir=./terraform plan' and 'terraform -chdir=./terraform apply -auto-approve' to push the state to S3."
+          # Uncomment and fill in the actual IDs for your existing AWS resources:
+          terraform -chdir=./terraform import aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
+          # terraform -chdir=./terraform import aws_s3_bucket_versioning.site_versioning ${{ vars.DOMAIN_NAME }}
+          terraform -chdir=./terraform import aws_s3_bucket_public_access_block.site ${{ vars.DOMAIN_NAME }}
+          # terraform -chdir=./terraform import aws_cloudfront_origin_access_identity.oai YOUR_CLOUDFRONT_OAI_ID
+          terraform -chdir=./terraform import aws_s3_bucket_policy.site ${{ vars.DOMAIN_NAME }}
+          # terraform -chdir=./terraform import aws_cloudfront_distribution.s3_distribution YOUR_CLOUDFRONT_DISTRIBUTION_ID
+
+      - name: Terraform Plan and Apply (after import)
+        run: |
+          terraform -chdir=./terraform plan
+          terraform -chdir=./terraform apply -auto-approve
+        # This step should only be run after all imports are successful.
+        # It will push the imported state to the S3 backend.
