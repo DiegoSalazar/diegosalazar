@@ -1,0 +1,117 @@
+doctype html
+html(lang="en" class="dark")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= `${cv.basics.name} | ${cv.basics.label}`
+    link(rel="stylesheet", href="styles.css")
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap", rel="stylesheet")
+    style.
+      html { scroll-behavior: smooth; }
+
+  body(class="bg-gray-900 text-gray-100 font-sans")
+    //- Header & Hero Section
+    header#home(class="bg-black")
+      div(class="container mx-auto px-6 py-20")
+        div(class="flex flex-col items-center text-center")
+          img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg")
+          h1(class="text-4xl md:text-6xl font-bold tracking-tighter")= cv.basics.name
+          h2(class="text-xl md:text-2xl text-gray-400 mt-2")= cv.basics.label
+          nav(class="mt-8 flex flex-wrap justify-center gap-4")
+            a(href="#about" class="text-gray-300 hover:text-white transition-colors px-3 py-1") About
+            a(href="#projects" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Projects
+            a(href="#experience" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Experience
+            a(href="#skills" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Skills
+            a(href="#testimonials" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Testimonials
+            a(href="#contact" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Contact
+
+    main(class="container mx-auto px-6")
+      //- About Section
+      section#about(class="py-20")
+        div(class="max-w-3xl mx-auto text-center")
+          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") About Me
+          div(class="prose prose-invert prose-lg max-w-none text-left")
+            p= cv.basics.summary
+
+      //- Projects Section
+      section#projects(class="py-20")
+        div(class="max-w-6xl mx-auto")
+          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12 text-center") Projects
+          div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8")
+            each project in cv.projects
+              div(class="bg-gray-800 rounded-lg overflow-hidden transform transition-transform hover:scale-105 shadow-lg")
+                if project.images && project.images.length > 0
+                  img(src=project.images[0], alt=project.name, class="w-full h-48 object-cover")
+                div(class="p-6")
+                  h3(class="text-xl font-bold")= project.name
+                  p(class="text-gray-400 mt-2 flex-grow")= project.summary
+                  div(class="mt-4")
+                    if project.url
+                      a(href=project.url, target="_blank", rel="noopener noreferrer", class="text-blue-400 hover:underline mr-4") View Project
+                    if project.githubUrl
+                      a(href=project.githubUrl, target="_blank", rel="noopener noreferrer", class="text-blue-400 hover:underline") View on GitHub
+
+      //- Experience Section
+      section#experience(class="py-20")
+        div(class="max-w-4xl mx-auto")
+          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12 text-center") Work Experience
+          div(class="relative border-l-2 border-gray-700 pl-8")
+            each job, index in cv.work
+              div(class="mb-12")
+                span(class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full")
+                  span(class="w-3 h-3 bg-white rounded-full")
+                h3(class="text-2xl font-bold")= job.position
+                p(class="text-lg text-gray-400")= `${job.name} | ${job.startDate} - ${job.endDate}`
+                if job.summary
+                  p(class="mt-2 text-gray-300")= job.summary
+                if job.highlights
+                  ul(class="list-disc list-inside mt-2 text-gray-300")
+                    each highlight in job.highlights
+                      li= highlight
+
+      //- Skills Section
+      section#skills(class="py-20")
+        div(class="max-w-4xl mx-auto")
+          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12 text-center") Skills
+          div(class="flex flex-wrap justify-center gap-4")
+            each skill in cv.skills
+              span(class="bg-gray-700 text-white px-4 py-2 rounded-full text-lg")= skill.name
+
+      //- Testimonials Section
+      section#testimonials(class="py-20")
+        div(class="max-w-4xl mx-auto")
+          h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12 text-center") Testimonials
+          div(class="space-y-8")
+            each ref in cv.references
+              div(class="bg-gray-800 p-6 rounded-lg shadow-lg")
+                blockquote(class="border-l-4 border-blue-500 pl-4")
+                  p(class="text-gray-300 italic")= ref.reference
+                  footer(class="mt-4")
+                    cite(class="font-bold not-italic")= ref.name
+                    if ref.title
+                      span(class="text-gray-400")= `, ${ref.title}`
+
+    //- Contact Section
+    footer#contact(class="bg-black py-20 text-center")
+      div(class="container mx-auto px-6")
+        h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") Get in Touch
+        p(class="text-lg text-gray-400 mb-8") You can reach me via email or find me on social media.
+        a(href=`mailto:${cv.basics.email}`, class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg") Email Me
+        div(class="flex justify-center gap-6 mt-8")
+          each profile in cv.basics.profiles
+            a(href=profile.url, target="_blank", rel="noopener noreferrer", class="text-gray-400 hover:text-white transition-colors text-2xl")
+              if profile.network.toLowerCase() === 'github'
+                i.fab.fa-github
+              else if profile.network.toLowerCase() === 'linkedin'
+                i.fab.fa-linkedin
+              else if profile.network.toLowerCase() === 'twitter'
+                i.fab.fa-twitter
+              else if profile.network.toLowerCase() === 'stack overflow'
+                i.fab.fa-stack-overflow
+              else
+                span= profile.network
+    
+    //- Font Awesome for social icons
+    script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")

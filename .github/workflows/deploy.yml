@@ -1,0 +1,53 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'diegosalazar/package-lock.json'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./diegosalazar
+
+      - name: Build website
+        run: npm run build
+        working-directory: ./diegosalazar
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./diegosalazar/terraform
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var="domain_name=${{ secrets.DOMAIN_NAME }}"
+        working-directory: ./diegosalazar/terraform
+
+      - name: Sync files to S3
+        run: |
+          aws s3 sync ../dist s3://${{ secrets.DOMAIN_NAME }} --delete
+        working-directory: ./diegosalazar/terraform

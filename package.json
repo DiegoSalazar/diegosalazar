@@ -1,0 +1,23 @@
+{
+  "name": "diegosalazar-portfolio",
+  "version": "2.0.0",
+  "description": "A modern, static portfolio for Diego Salazar.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:assets": "onchange 'src/assets/**' -- ncp src/assets dist/assets",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
+    "watch:html": "onchange 'src/**/*.pug' 'src/data/cv.json' -- npm run build"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "fs-extra": "^11.2.0",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "pug": "^3.0.2",
+    "tailwindcss": "^3.4.1"
+  }
+}
