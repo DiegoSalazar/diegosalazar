@@ -16,7 +16,7 @@ html(lang="en" class="dark")
     header#home(class="bg-black")
       div(class="container mx-auto px-6 py-20")
         div(class="flex flex-col items-center text-center")
-          img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg")
+          img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg object-cover")
           h1(class="text-4xl md:text-6xl font-bold tracking-tighter")= cv.basics.name
           h2(class="text-xl md:text-2xl text-gray-400 mt-2")= cv.basics.label
           if cv.basics.tagline
