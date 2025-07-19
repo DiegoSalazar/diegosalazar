@@ -58,11 +58,23 @@
   },
   "work": [
     {
+      "name": "Sony Music",
+      "position": "Senior Software Engineer",
+      "url": "https://www.sonymusic.com/",
+      "startDate": "2025",
+      "endDate": "Present",
+      "summary": "Member of the Product Design Engineering group.",
+      "highlights": [
+        "Building and maintaining SaaS software for the Accounting and Royalties team.",
+        "Heavy use of Typescript, React, Docker, AWS, and LLMs/Agentic AI to build tools for devs and features for users."
+      ]
+    },
+    {
       "name": "Bloomberg",
       "position": "Senior Software Engineer",
       "url": "https://www.bna.com/bloomberglaw/",
       "startDate": "2018",
-      "endDate": "Present",
+      "endDate": "2025",
       "summary": "Member of the Bloomberg Law Web Products team developing a SaaS based legal research app.",
       "highlights": [
         "Working in an Agile software development team.",
@@ -215,11 +227,19 @@
     "summary": "Experienced software developer specializing in web applications and web services. Specialties: Backend development, API design, Service Oriented Architecture, large scale web services, server administration.",
     "sets": [
       {
-        "name": "Ruby on Rails",
+        "name": "Typescript",
         "level": "Expert"
       },
       {
-        "name": "Javascript/Node/Vue",
+        "name": "React",
+        "level": "Expert"
+      },
+      {
+        "name": "Python",
+        "level": "Expert"
+      },
+      {
+        "name": "Ruby on Rails",
         "level": "Expert"
       },
       {
@@ -227,11 +247,11 @@
         "level": "Expert"
       },
       {
-        "name": "PostgreSQL, MySQL",
+        "name": "LLMs/Prompt Engineering",
         "level": "Pro"
       },
       {
-        "name": "Python",
+        "name": "PostgreSQL, MySQL",
         "level": "Pro"
       },
       {
@@ -298,15 +318,11 @@
     }
   ],
   "meta": {
-    "resumeUrl": "files/DiegoSalazar-Resume.pdf",
+    "resumeUrl": "assets/DiegoSalazar-Resume.pdf",
     "credits": [
       {
-        "name": "Profile image by Eduardo Souza",
-        "url": "https://github.com/esouza"
-      },
-      {
-        "name": "Theme by Xiaoying Riley",
-        "url": "https://themes.3rdwavemedia.com"
+        "name": "Profile photo by Andrew Soria",
+        "url": "https://www.andrewsoria.com/"
       }
     ]
   }
