@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = var.domain_name
+    bucket = "diegosalazar.co"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
