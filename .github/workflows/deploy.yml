@@ -17,15 +17,13 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: 'diegosalazar/package-lock.json'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./diegosalazar
 
       - name: Build website
         run: npm run build
-        working-directory: ./diegosalazar
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -40,14 +38,10 @@ jobs:
           terraform_version: 1.5.0
 
       - name: Terraform Init
-        run: terraform init
-        working-directory: ./diegosalazar/terraform
+        run: terraform -chdir=./terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var="domain_name=${{ secrets.DOMAIN_NAME }}"
-        working-directory: ./diegosalazar/terraform
+        run: terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ secrets.DOMAIN_NAME }}"
 
       - name: Sync files to S3
-        run: |
-          aws s3 sync ../dist s3://${{ secrets.DOMAIN_NAME }} --delete
-        working-directory: ./diegosalazar/terraform
+        run: aws s3 sync ./dist s3://${{ secrets.DOMAIN_NAME }} --delete
