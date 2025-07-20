@@ -1,7 +1,7 @@
 //- Table of Contents (Wide screens only, only after hero is out of view)
 aside#toc(class="hidden 2xl:flex flex-col fixed top-32 left-0 z-30 w-60 px-4 py-6 h-[70vh] bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-transparent border-r-2 border-gray-800/60 shadow-none rounded-r-xl gap-2 opacity-0 pointer-events-none transition-opacity duration-500 backdrop-blur-md invisible" style="animation:none;")
   h3(class="text-base font-bold text-blue-400 mb-3 tracking-wide uppercase opacity-80") Table of Contents
-  ul(class="flex flex-col gap-1 text-gray-300 text-base font-medium")
+  ul
     li
       a(href="#about" data-section="about" class="toc-link") About Me
     li
@@ -16,7 +16,7 @@ aside#toc(class="hidden 2xl:flex flex-col fixed top-32 left-0 z-30 w-60 px-4 py-
       a(href="#contact" data-section="contact" class="toc-link") Contact
 
   //- Jump to Top Button (TOC sidebar version)
-  button#jump-to-top-btn-toc(type="button" aria-label="Jump to top" style="margin-top:auto;align-self:center;display:flex;flex-direction:column;align-items:center;")
-    svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:2em;height:2em;")
+  button#jump-to-top-btn-toc(type="button" aria-label="Jump to top" class="jump-to-top-btn-toc sidebar-center" style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:auto;margin-left:auto;margin-right:auto;width:3.5rem;height:3.5rem;padding:0;")
+    svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:1.5em;height:1.5em;display:block;")
       path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7")
-    span(style="font-size:1rem;margin-top:0.2em;color:#60a5fa;font-weight:600;letter-spacing:0.05em;") Top
+    span(style="display:block;font-size:1rem;margin-top:0.2em;text-align:center;") Top

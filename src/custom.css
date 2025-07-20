@@ -312,3 +312,22 @@ body.light .text-blue-400 {
 body.light .text-gray-900 {
   color: #0f172a !important;
 }
+/* Center the jump-to-top button in the sidebar */
+.jump-to-top-btn-toc.sidebar-center {
+  margin-top: auto;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: static;
+  left: unset;
+  transform: unset;
+}
+.jump-to-top-btn-toc.sidebar-center > svg,
+.jump-to-top-btn-toc.sidebar-center > span {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
