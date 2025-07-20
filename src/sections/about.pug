@@ -1,0 +1,6 @@
+//- About Section
+section#about
+  h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") About Me
+  div(class="prose prose-invert prose-lg max-w-none text-left")
+    each para in cv.basics.summary
+      p= para

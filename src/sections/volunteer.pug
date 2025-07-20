@@ -1,0 +1,16 @@
+//- Volunteer Section
+if cv.volunteer && cv.volunteer.length
+  section#volunteer(class="mt-20")
+    h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12") Volunteer
+    div(class="space-y-8")
+      each vol in cv.volunteer
+        div(class="bg-gray-800 p-6 rounded-lg shadow-lg")
+          h3(class="text-2xl font-bold mb-2 flex items-center gap-2")
+            if vol.url
+              a(href=vol.url, target="_blank", rel="noopener noreferrer", class="text-blue-400 hover:underline")= vol.organization
+            else
+              = vol.organization
+            if vol.position
+              span(class="text-base text-gray-400 font-medium ml-2")= `– ${vol.position}`
+          if vol.summary
+            p(class="text-gray-300 mt-2")= vol.summary

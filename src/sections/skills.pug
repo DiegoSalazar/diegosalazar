@@ -1,0 +1,38 @@
+//- Skills Section
+section#skills
+  h2(class="text-2xl font-bold tracking-tight mb-6") Skills
+  if cv.skills.summary
+    p(class="text-gray-400 mb-6")= cv.skills.summary
+  div(class="flex flex-wrap gap-2")
+    each skill in cv.skills.sets
+      - let colorClass = '';
+      if (skill.name === 'Typescript')
+        - colorClass = 'bg-blue-700 text-white';
+      else if (skill.name === 'React')
+        - colorClass = 'bg-cyan-600 text-white';
+      else if (skill.name === 'Python')
+        - colorClass = 'bg-yellow-400 text-gray-900';
+      else if (skill.name === 'Ruby on Rails')
+        - colorClass = 'bg-red-600 text-white';
+      else if (skill.name === 'HTML5, CSS3, SASS')
+        - colorClass = 'bg-pink-500 text-white';
+      else if (skill.name === 'LLMs/Prompt Engineering')
+        - colorClass = 'bg-purple-700 text-white';
+      else if (skill.name === 'PostgreSQL, MySQL')
+        - colorClass = 'bg-emerald-700 text-white';
+      else if (skill.name === 'Elixir')
+        - colorClass = 'bg-violet-700 text-white';
+      else
+        - colorClass = 'bg-gray-700 text-white';
+      span(class=`${colorClass} px-3 py-1 rounded-full text-sm shadow-md font-semibold transition-all duration-200`) #{skill.name}
+  if cv.meta.resumeUrl
+    div(class="mt-7")
+      a(href=cv.meta.resumeUrl, target="_blank", class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg inline-block shadow-lg") Download Resume
+  div(class="mt-8 flex flex-wrap items-center gap-4")
+    each profile in cv.basics.profiles
+      if profile.network === 'Stack Overflow' && profile.flair
+        a(href=profile.url, target="_blank")
+          img(src=profile.flair, alt="Stack Overflow Flair")
+      if profile.network === 'Codewars' && profile.badge
+        a(href=profile.url, target="_blank")
+          img(src=profile.badge, alt="Codewars Badge")

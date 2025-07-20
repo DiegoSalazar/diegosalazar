@@ -1,0 +1,19 @@
+//- Contact Section
+footer#contact(class="bg-black mt-20 py-20 text-center")
+  div(class="container mx-auto px-6")
+    h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") Get in Touch
+    p(class="text-lg text-gray-400 mb-8") You can reach me via email or find me on social media.
+    if cv.meta.resumeUrl
+      a(href=cv.meta.resumeUrl, target="_blank", class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg inline-block mb-8") Download Resume
+    div(class="flex justify-center gap-6 mt- flex-wrap")
+      each profile in cv.basics.profiles
+        a(href=profile.url, target="_blank", rel="noopener noreferrer", class="text-gray-400 hover:text-white transition-colors text-2xl")
+          i(class="fab fa-#{profile.iconMame}")= profile.network
+    if cv.meta.credits
+      div(class="text-sm text-gray-600 mt-12")
+        each credit in cv.meta.credits
+          span.px-2
+            if credit.url
+              a(href=credit.url, target="_blank", class="hover:underline")= credit.name
+            else
+              = credit.name

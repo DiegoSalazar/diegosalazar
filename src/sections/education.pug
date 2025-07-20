@@ -1,0 +1,8 @@
+//- Education Section
+section#education(class="mt-12")
+  h2(class="text-2xl font-bold tracking-tight mb-6") Education
+  div(class="space-y-4")
+    each course in cv.education
+      div
+        h3(class="font-semibold")= course.area
+        p(class="text-gray-400")= `${course.institution} (${course.startDate} - ${course.endDate})`

@@ -12,42 +12,11 @@ html(lang="en" class="dark")
 
   body(class="bg-gray-900 text-gray-100 font-sans")
     //- Sticky Section Header (Animated, only for < 1536px and only after hero is out of view)
-    div#sticky-section-header(class="fixed top-0 left-0 w-full z-40 pointer-events-none transition-all duration-500 ease-in-out opacity-0 translate-y-[-100%] bg-gradient-to-b from-blue-900/90 to-transparent backdrop-blur-md shadow-lg 2xl:hidden")
-      h2(class="text-xl md:text-2xl font-bold tracking-tight text-white px-6 py-3 mx-auto max-w-4xl transition-all duration-500 ease-in-out")
-        |
+    include sections/sticky-header.pug
     //- Table of Contents (Wide screens only, only after hero is out of view)
-    aside#toc(class="hidden 2xl:flex flex-col fixed top-32 left-0 z-30 w-60 px-4 py-6 h-[70vh] bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-transparent border-r-2 border-gray-800/60 shadow-none rounded-r-xl gap-2 opacity-0 pointer-events-none transition-opacity duration-500 backdrop-blur-md invisible" style="animation:none;")
-      h3(class="text-base font-bold text-blue-400 mb-3 tracking-wide uppercase opacity-80") Table of Contents
-      ul(class="flex flex-col gap-1 text-gray-300 text-base font-medium")
-        li
-          a(href="#about" data-section="about" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") About Me
-        li
-          a(href="#experience" data-section="experience" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Experience
-        li
-          a(href="#projects" data-section="projects" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Personal Projects
-        li
-          a(href="#volunteer" data-section="volunteer" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Volunteer
-        li
-          a(href="#testimonials" data-section="testimonials" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Testimonials
-        li
-          a(href="#contact" data-section="contact" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Contact
+    include sections/toc.pug
     //- Header & Hero Section
-    header#home(class="bg-gradient-to-b from-blue-900 via-blue-800/60 to-gray-900 bg-no-repeat bg-cover")
-      div(class="container mx-auto px-6 py-20")
-        div(class="flex flex-col items-center text-center")
-          img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg object-cover")
-          h1(class="text-4xl md:text-6xl font-bold tracking-tight drop-shadow-xl font-montserrat")= cv.basics.name
-          h2(class="text-xl md:text-2xl text-gray-400 mt-6 drop-shadow")= cv.basics.label
-          if cv.basics.tagline
-            p(class="text-lg text-gray-500 mt-4 italic drop-shadow-sm")= cv.basics.tagline
-          nav(class="mt-8 flex flex-wrap justify-center gap-4 drop-shadow-md")
-            a(href="#about" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") About
-            a(href="#experience" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Experience
-            a(href="#projects" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Projects
-            a(href="#volunteer" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Volunteer
-            a(href="#testimonials" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Testimonials
-            a(href="#contact" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Contact
-
+    include sections/hero.pug
     //- Main Content Wrapper
     div(class="main-content-wrapper container mx-auto px-4 sm:px-6 py-20 transition-all duration-500" style="max-width:1100px;margin-left:auto;margin-right:auto;" 2xl:style="max-width:1100px;margin-left:calc(15rem + 2vw);margin-right:auto;")
       div(class="lg:grid lg:grid-cols-3 lg:gap-12")
@@ -184,29 +153,9 @@ html(lang="en" class="dark")
                   p(class="text-gray-400")= lang.fluency
 
     //- Contact Section
-    footer#contact(class="bg-black mt-20 py-20 text-center")
-      div(class="container mx-auto px-6")
-        h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") Get in Touch
-        p(class="text-lg text-gray-400 mb-8") You can reach me via email or find me on social media.
-        if cv.meta.resumeUrl
-          a(href=cv.meta.resumeUrl, target="_blank", class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg inline-block mb-8") Download Resume
-        div(class="flex justify-center gap-6 mt- flex-wrap")
-          each profile in cv.basics.profiles
-            a(href=profile.url, target="_blank", rel="noopener noreferrer", class="text-gray-400 hover:text-white transition-colors text-2xl")
-              i(class="fab fa-#{profile.iconMame}")= profile.network
-        if cv.meta.credits
-          div(class="text-sm text-gray-600 mt-12")
-            each credit in cv.meta.credits
-              span.px-2
-                if credit.url
-                  a(href=credit.url, target="_blank", class="hover:underline")= credit.name
-                else
-                  = credit.name
-
+    include sections/contact.pug
     //- Jump to Top Button
-    button#jump-to-top-btn(type="button" aria-label="Jump to top")
-      svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7")
+    include sections/jump-to-top-btn.pug
 
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
@@ -218,22 +167,21 @@ html(lang="en" class="dark")
         window.__jumpToTopPatched = true;
         function showJumpToTopBtn() {
           var btn = document.getElementById('jump-to-top-btn');
-          if (!btn) return;
-          if (window.scrollY > window.innerHeight * 0.5) {
-            btn.classList.add('visible');
-          } else {
-            btn.classList.remove('visible');
-          }
+          var btnToc = document.getElementById('jump-to-top-btn-toc');
+          var show = window.scrollY > window.innerHeight * 0.5;
+          if (btn) btn.classList.toggle('visible', show);
+          if (btnToc) btnToc.classList.toggle('visible', show && window.innerWidth >= 1536);
         }
         window.addEventListener('scroll', showJumpToTopBtn, { passive: true });
         window.addEventListener('resize', showJumpToTopBtn);
         document.addEventListener('DOMContentLoaded', function() {
           var btn = document.getElementById('jump-to-top-btn');
-          if (btn) {
-            btn.addEventListener('click', function() {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+          var btnToc = document.getElementById('jump-to-top-btn-toc');
+          function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
+          if (btn) btn.addEventListener('click', scrollToTop);
+          if (btnToc) btnToc.addEventListener('click', scrollToTop);
           showJumpToTopBtn();
         });
       })();
