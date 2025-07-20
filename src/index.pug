@@ -28,6 +28,8 @@ html(lang="en" class="dark")
         li
           a(href="#projects" data-section="projects" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Personal Projects
         li
+          a(href="#volunteer" data-section="volunteer" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Volunteer
+        li
           a(href="#testimonials" data-section="testimonials" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Testimonials
         li
           a(href="#contact" data-section="contact" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Contact
@@ -44,6 +46,7 @@ html(lang="en" class="dark")
             a(href="#about" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") About
             a(href="#projects" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Projects
             a(href="#experience" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Experience
+            a(href="#volunteer" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Volunteer
             a(href="#testimonials" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Testimonials
             a(href="#contact" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Contact
 
@@ -91,6 +94,23 @@ html(lang="en" class="dark")
                         a(href=project.url, target="_blank", rel="noopener noreferrer", class="text-blue-400 hover:underline mr-4") View Project
                       if project.githubUrl
                         a(href=project.githubUrl, target="_blank", rel="noopener noreferrer", class="text-blue-400 hover:underline") View on GitHub
+
+          //- Volunteer Section
+          if cv.volunteer && cv.volunteer.length
+            section#volunteer(class="mt-20")
+              h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12") Volunteer
+              div(class="space-y-8")
+                each vol in cv.volunteer
+                  div(class="bg-gray-800 p-6 rounded-lg shadow-lg")
+                    h3(class="text-2xl font-bold mb-2 flex items-center gap-2")
+                      if vol.url
+                        a(href=vol.url, target="_blank", rel="noopener noreferrer", class="text-blue-400 hover:underline")= vol.organization
+                      else
+                        = vol.organization
+                      if vol.position
+                        span(class="text-base text-gray-400 font-medium ml-2")= `– ${vol.position}`
+                    if vol.summary
+                      p(class="text-gray-300 mt-2")= vol.summary
 
           //- Testimonials Section
           section#testimonials(class="mt-20")
@@ -171,11 +191,12 @@ html(lang="en" class="dark")
     script.
       // Sticky Section Header & TOC logic
       (function() {
-        const sectionIds = ['about', 'experience', 'projects', 'testimonials', 'contact'];
+        const sectionIds = ['about', 'experience', 'projects', 'volunteer', 'testimonials', 'contact'];
         const sectionTitles = {
           about: 'About Me',
           experience: 'Work Experience',
           projects: 'Personal Projects',
+          volunteer: 'Volunteer',
           testimonials: 'Testimonials',
           contact: 'Get in Touch',
         };
@@ -195,15 +216,16 @@ html(lang="en" class="dark")
           return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2);
         }
         function onScroll() {
-          let current = null;
+          let current = sectionIds[0];
           for (const id of sectionIds) {
             const el = document.getElementById(id);
             if (el) {
               const rect = el.getBoundingClientRect();
-              if (rect.top <= 80) current = id;
+              if (rect.top <= 80) {
+                current = id;
+              }
             }
           }
-          if (!current) current = sectionIds[0];
           // If at page bottom, always highlight 'contact'
           if (isAtPageBottom()) {
             current = 'contact';
