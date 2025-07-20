@@ -2,3 +2,4 @@ node_modules/
 .rvmrc
 .DS_Store
 dist/
+old-dns-records.txt
