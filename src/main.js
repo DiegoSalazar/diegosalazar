@@ -105,3 +105,30 @@
     showJumpToTopBtn();
   });
 })();
+// Hero subnav & tagline animated gradient sync (non-destructive)
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var tagline = document.querySelector('.animated-gradient-tagline');
+    var navLinks = document.querySelectorAll('header#home nav a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('mouseenter', function() {
+        if (tagline) tagline.classList.add('animated-gradient');
+        navLinks.forEach(l => l.classList.remove('animated-gradient'));
+        link.classList.add('animated-gradient');
+      });
+      link.addEventListener('focus', function() {
+        if (tagline) tagline.classList.add('animated-gradient');
+        navLinks.forEach(l => l.classList.remove('animated-gradient'));
+        link.classList.add('animated-gradient');
+      });
+      link.addEventListener('mouseleave', function() {
+        if (tagline) tagline.classList.remove('animated-gradient');
+        navLinks.forEach(l => l.classList.remove('animated-gradient'));
+      });
+      link.addEventListener('blur', function() {
+        if (tagline) tagline.classList.remove('animated-gradient');
+        navLinks.forEach(l => l.classList.remove('animated-gradient'));
+      });
+    });
+  });
+})();
