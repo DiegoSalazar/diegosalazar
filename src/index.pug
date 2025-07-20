@@ -59,7 +59,8 @@ html(lang="en" class="dark")
           section#about
             h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-6") About Me
             div(class="prose prose-invert prose-lg max-w-none text-left")
-              p= cv.basics.summary
+              each para in cv.basics.summary
+                p= para
 
           //- Experience Section
           section#experience(class="mt-20")
@@ -134,7 +135,26 @@ html(lang="en" class="dark")
               p(class="text-gray-400 mb-6")= cv.skills.summary
             div(class="flex flex-wrap gap-2")
               each skill in cv.skills.sets
-                span(class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm")= skill.name
+                - let colorClass = '';
+                if (skill.name === 'Typescript')
+                  - colorClass = 'bg-blue-700 text-white';
+                else if (skill.name === 'React')
+                  - colorClass = 'bg-cyan-600 text-white';
+                else if (skill.name === 'Python')
+                  - colorClass = 'bg-yellow-400 text-gray-900';
+                else if (skill.name === 'Ruby on Rails')
+                  - colorClass = 'bg-red-600 text-white';
+                else if (skill.name === 'HTML5, CSS3, SASS')
+                  - colorClass = 'bg-pink-500 text-white';
+                else if (skill.name === 'LLMs/Prompt Engineering')
+                  - colorClass = 'bg-purple-700 text-white';
+                else if (skill.name === 'PostgreSQL, MySQL')
+                  - colorClass = 'bg-emerald-700 text-white';
+                else if (skill.name === 'Elixir')
+                  - colorClass = 'bg-violet-700 text-white';
+                else
+                  - colorClass = 'bg-gray-700 text-white';
+                span(class=`${colorClass} px-3 py-1 rounded-full text-sm shadow-md font-semibold transition-all duration-200`) #{skill.name}
             if cv.meta.resumeUrl
               div(class="mt-7")
                 a(href=cv.meta.resumeUrl, target="_blank", class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg inline-block shadow-lg") Download Resume
