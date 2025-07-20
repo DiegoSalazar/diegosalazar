@@ -34,6 +34,10 @@ body {
 @media (min-width: 1536px) {
   #toc {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    width: fit-content;
     animation: fade-in-toc 0.7s cubic-bezier(0.4,0,0.2,1);
     background: linear-gradient(120deg, #0f172aee 60%, #1e293bee 100%);
     border-right: 2px solid #33415599;
