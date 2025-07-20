@@ -1,0 +1,182 @@
+/* Custom site-wide and hero background textures, sticky header, TOC, and jump-to-top button styles */
+html { scroll-behavior: smooth; }
+.font-montserrat { font-family: 'Montserrat', 'Inter', sans-serif; }
+header#home {
+  position: relative;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.06"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%23b6d0f7" stroke-width="0.4"/></g><g opacity="0.13"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%23b6d0f7" stroke-width="0.7"/></g><g opacity="0.10"><circle cx="32" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="64" r="0.7" fill="%23b6d0f7"/></g></svg>'),
+    linear-gradient(to bottom, #1e3a8a 0%, #1e40af99 60%, #0f172a 100%);
+  background-size: auto, cover;
+  background-repeat: repeat, no-repeat;
+  background-position: center, center;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+body {
+  background-color: #0f172a;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.025"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%23b6d0f7" stroke-width="0.4"/></g><g opacity="0.06"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%23b6d0f7" stroke-width="0.7"/></g><g opacity="0.04"><circle cx="32" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="64" r="0.7" fill="%23b6d0f7"/></g></svg>');
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+#sticky-section-header {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+#sticky-section-header.opacity-100 {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (min-width: 1536px) {
+  #toc {
+    display: flex;
+    animation: fade-in-toc 0.7s cubic-bezier(0.4,0,0.2,1);
+    background: linear-gradient(120deg, #0f172aee 60%, #1e293bee 100%);
+    border-right: 2px solid #33415599;
+    box-shadow: none;
+    backdrop-filter: blur(8px);
+  }
+  @keyframes fade-in-toc {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .toc-link.toc-active {
+    color: #60a5fa !important;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1e293b 60%, #2563eb22 100%);
+    border-radius: 0.5rem;
+  }
+  .toc-link.toc-active::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 28px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 0 8px #3b82f6cc;
+    transition: all 0.3s;
+  }
+  .toc-link {
+    position: relative;
+    transition: color 0.2s, background 0.2s;
+  }
+  .toc-link:hover {
+    color: #93c5fd;
+    background: #1e293b44;
+  }
+  #toc.opacity-0 {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #toc.opacity-100 {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .main-content-wrapper {
+    max-width: 1100px;
+    margin-left: calc(15rem + 2vw);
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow-x: visible;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 1535px) {
+  .main-content-wrapper {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 1100px !important;
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+  }
+}
+header#home h1,
+header#home h2,
+header#home p,
+header#home nav a {
+  text-shadow:
+    0 6px 32px rgba(16,32,64,0.55),
+    0 2px 8px rgba(30,58,138,0.35),
+    0 1px 0 rgba(0,0,0,0.22),
+    0 0 2px #fff2;
+}
+header#home h1 {
+  text-shadow:
+    0 10px 40px rgba(30,58,138,0.75),
+    0 4px 24px rgba(16,32,64,0.55),
+    0 2px 8px rgba(0,0,0,0.28),
+    0 0 4px #fff4;
+}
+header#home h2 {
+  text-shadow:
+    0 6px 24px rgba(30,58,138,0.65),
+    0 2px 8px rgba(16,32,64,0.45),
+    0 1.5px 6px rgba(0,0,0,0.22),
+    0 0 2px #fff3;
+}
+header#home p {
+  text-shadow:
+    0 4px 18px rgba(16,32,64,0.45),
+    0 1.5px 6px rgba(0,0,0,0.18),
+    0 0 1px #fff2;
+}
+header#home nav a {
+  text-shadow:
+    0 2px 12px rgba(16,32,64,0.45),
+    0 1px 0 rgba(0,0,0,0.18),
+    0 0 1px #fff2;
+}
+#jump-to-top-btn {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, #2563eb 60%, #1e3a8a 100%);
+  color: #fff;
+  border-radius: 9999px;
+  box-shadow: 0 6px 32px rgba(16,32,64,0.25), 0 2px 8px rgba(30,58,138,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s, transform 0.3s;
+  transform: translateY(40px) scale(0.95);
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#jump-to-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+#jump-to-top-btn:hover {
+  background: linear-gradient(135deg, #1e40af 60%, #2563eb 100%);
+  box-shadow: 0 8px 40px #2563eb55, 0 2px 8px #1e3a8a33;
+}
+#jump-to-top-btn svg {
+  width: 1.5em;
+  height: 1.5em;
+  display: block;
+}
+@media (max-width: 640px) {
+  #jump-to-top-btn {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.4rem;
+  }
+}

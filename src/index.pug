@@ -5,35 +5,10 @@ html(lang="en" class="dark")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title= `${cv.basics.name} | ${cv.basics.label}`
     link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="/diegosalazar/src/custom.css")
     link(rel="preconnect", href="https://fonts.googleapis.com")
     link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap", rel="stylesheet")
-    style.
-      html { scroll-behavior: smooth; }
-      .font-montserrat { font-family: 'Montserrat', 'Inter', sans-serif; }
-      /* Subtle, refined architectural draft paper hero background with major and minor gridlines */
-      header#home {
-        position: relative;
-        background-image:
-          /* SVG: major grid every 32px, minor every 8px, subtle dots at major intersections */
-          url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.06"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%23b6d0f7" stroke-width="0.4"/></g><g opacity="0.13"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%23b6d0f7" stroke-width="0.7"/></g><g opacity="0.10"><circle cx="32" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="64" r="0.7" fill="%23b6d0f7"/></g></svg>'),
-          linear-gradient(to bottom, #1e3a8a 0%, #1e40af99 60%, #0f172a 100%);
-        background-size: auto, cover;
-        background-repeat: repeat, no-repeat;
-        background-position: center, center;
-        /* Smooth fade to main bg */
-        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-      }
-      /* Subtle, refined site-wide draft paper background with major and minor gridlines */
-      body {
-        background-color: #0f172a;
-        background-image:
-          url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.025"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%23b6d0f7" stroke-width="0.4"/></g><g opacity="0.06"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%23b6d0f7" stroke-width="0.7"/></g><g opacity="0.04"><circle cx="32" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="32" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="32" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="0" r="0.7" fill="%23b6d0f7"/><circle cx="0" cy="64" r="0.7" fill="%23b6d0f7"/><circle cx="64" cy="64" r="0.7" fill="%23b6d0f7"/></g></svg>');
-        background-size: auto;
-        background-repeat: repeat;
-        background-attachment: fixed;
-      }
 
   body(class="bg-gray-900 text-gray-100 font-sans")
     //- Sticky Section Header (Animated, only for < 1536px and only after hero is out of view)
@@ -228,299 +203,37 @@ html(lang="en" class="dark")
                 else
                   = credit.name
 
+    //- Jump to Top Button
+    button#jump-to-top-btn(type="button" aria-label="Jump to top")
+      svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7")
+
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
-    //- Sticky Header & TOC Scroll Logic
+    script(src="/diegosalazar/src/main.js")
     script.
-      // Sticky Section Header & TOC logic
+      // Fallback for Jump to Top Button if main.js fails to load
       (function() {
-        const sectionIds = ['about', 'experience', 'projects', 'volunteer', 'testimonials', 'contact'];
-        const sectionTitles = {
-          about: 'About Me',
-          experience: 'Work Experience',
-          projects: 'Personal Projects',
-          volunteer: 'Volunteer',
-          testimonials: 'Testimonials',
-          contact: 'Get in Touch',
-        };
-        const header = document.getElementById('sticky-section-header');
-        const headerH2 = header ? header.querySelector('h2') : null;
-        const toc = document.getElementById('toc');
-        const tocLinks = document.querySelectorAll('.toc-link');
-        const heroSection = document.getElementById('home');
-        let lastSection = null;
-        let tocWasShown = false;
-        function isHeroOutOfView() {
-          if (!heroSection) return false;
-          const rect = heroSection.getBoundingClientRect();
-          return rect.bottom <= 80;
-        }
-        function isAtPageBottom() {
-          return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2);
-        }
-        function onScroll() {
-          let current = sectionIds[0];
-          for (const id of sectionIds) {
-            const el = document.getElementById(id);
-            if (el) {
-              const rect = el.getBoundingClientRect();
-              if (rect.top <= 80) {
-                current = id;
-              }
-            }
-          }
-          // If at page bottom, always highlight 'contact'
-          if (isAtPageBottom()) {
-            current = 'contact';
-          }
-          // Show/hide sticky header for < 1536px only after hero is out of view
-          if (header && headerH2) {
-            if (window.innerWidth < 1536 && isHeroOutOfView()) {
-              headerH2.textContent = sectionTitles[current];
-              header.classList.remove('opacity-0', 'translate-y-[-100%]');
-              header.classList.add('opacity-100', 'translate-y-0');
-            } else {
-              header.classList.add('opacity-0', 'translate-y-[-100%]');
-              header.classList.remove('opacity-100', 'translate-y-0');
-            }
-          }
-          // Show/hide TOC for >= 1536px only after hero is out of view
-          if (toc) {
-            if (window.innerWidth >= 1536 && isHeroOutOfView()) {
-              toc.classList.remove('opacity-0', 'pointer-events-none');
-              toc.classList.add('opacity-100');
-              tocWasShown = true;
-            } else {
-              toc.classList.add('opacity-0', 'pointer-events-none');
-              toc.classList.remove('opacity-100');
-            }
-          }
-          // Highlight TOC links
-          if (lastSection !== current) {
-            lastSection = current;
-            tocLinks.forEach(link => {
-              if (link.dataset.section === current) {
-                link.classList.add('text-blue-400', 'font-bold', 'toc-active');
-              } else {
-                link.classList.remove('text-blue-400', 'font-bold', 'toc-active');
-              }
-            });
-          }
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll);
-        window.addEventListener('DOMContentLoaded', () => {
-          // Hide TOC on load
-          if (toc) {
-            toc.classList.add('opacity-0', 'pointer-events-none', 'invisible');
-            toc.classList.remove('opacity-100');
-            toc.style.animation = 'none';
-          }
-          setTimeout(() => {
-            if (toc) toc.classList.remove('invisible');
-            onScroll();
-          }, 200);
-        });
-      })();
-    style.
-      /* Sticky Section Header Animations */
-      #sticky-section-header {
-        pointer-events: none;
-        opacity: 0;
-        transform: translateY(-100%);
-      }
-      #sticky-section-header.opacity-100 {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      /* TOC Animations & Highlight */
-      @media (min-width: 1536px) {
-        #toc {
-          display: flex;
-          animation: fade-in-toc 0.7s cubic-bezier(0.4,0,0.2,1);
-          background: linear-gradient(120deg, #0f172aee 60%, #1e293bee 100%);
-          border-right: 2px solid #33415599;
-          box-shadow: none;
-          backdrop-filter: blur(8px);
-        }
-        @keyframes fade-in-toc {
-          from { opacity: 0; transform: translateX(-40px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        .toc-link.toc-active {
-          color: #60a5fa !important; /* blue-400 */
-          font-weight: 700;
-          background: linear-gradient(90deg, #1e293b 60%, #2563eb22 100%);
-          border-radius: 0.5rem;
-        }
-        .toc-link.toc-active::before {
-          content: '';
-          position: absolute;
-          left: -10px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 4px;
-          height: 28px;
-          border-radius: 6px;
-          background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
-          box-shadow: 0 0 8px #3b82f6cc;
-          transition: all 0.3s;
-        }
-        .toc-link {
-          position: relative;
-          transition: color 0.2s, background 0.2s;
-        }
-        .toc-link:hover {
-          color: #93c5fd;
-          background: #1e293b44;
-        }
-        #toc.opacity-0 {
-          opacity: 0;
-          pointer-events: none;
-        }
-        #toc.opacity-100 {
-          opacity: 1;
-          pointer-events: auto;
-        }
-        /* Main content wrapper: allow space for sidebar, prevent overflow */
-        .main-content-wrapper {
-          max-width: 1100px;
-          margin-left: calc(15rem + 2vw);
-          margin-right: auto;
-          box-sizing: border-box;
-          overflow-x: visible;
-        }
-        body {
-          overflow-x: hidden;
-        }
-      }
-      /* For screens < 1536px, center content with normal padding, no sidebar space needed */
-      @media (max-width: 1535px) {
-        .main-content-wrapper {
-          margin-left: auto !important;
-          margin-right: auto !important;
-          max-width: 1100px !important;
-          padding-left: 2em !important;
-          padding-right: 2em !important;
-        }
-      }
-      /* Make hero text pop even more with layered, deeper drop shadows and subtle highlight */
-      header#home h1,
-      header#home h2,
-      header#home p,
-      header#home nav a {
-        text-shadow:
-          0 6px 32px rgba(16,32,64,0.55),
-          0 2px 8px rgba(30,58,138,0.35),
-          0 1px 0 rgba(0,0,0,0.22),
-          0 0 2px #fff2;
-      }
-      header#home h1 {
-        text-shadow:
-          0 10px 40px rgba(30,58,138,0.75),
-          0 4px 24px rgba(16,32,64,0.55),
-          0 2px 8px rgba(0,0,0,0.28),
-          0 0 4px #fff4;
-      }
-      header#home h2 {
-        text-shadow:
-          0 6px 24px rgba(30,58,138,0.65),
-          0 2px 8px rgba(16,32,64,0.45),
-          0 1.5px 6px rgba(0,0,0,0.22),
-          0 0 2px #fff3;
-      }
-      header#home p {
-        text-shadow:
-          0 4px 18px rgba(16,32,64,0.45),
-          0 1.5px 6px rgba(0,0,0,0.18),
-          0 0 1px #fff2;
-      }
-      header#home nav a {
-        text-shadow:
-          0 2px 12px rgba(16,32,64,0.45),
-          0 1px 0 rgba(0,0,0,0.18),
-          0 0 1px #fff2;
-      }
-      /* Jump to Top Button */
-      #jump-to-top-btn {
-        position: fixed;
-        bottom: 2.5rem;
-        right: 2.5rem;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 3.5rem;
-        height: 3.5rem;
-        background: linear-gradient(135deg, #2563eb 60%, #1e3a8a 100%);
-        color: #fff;
-        border-radius: 9999px;
-        box-shadow: 0 6px 32px rgba(16,32,64,0.25), 0 2px 8px rgba(30,58,138,0.18);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s, transform 0.3s;
-        transform: translateY(40px) scale(0.95);
-        font-size: 2rem;
-        border: none;
-        outline: none;
-        cursor: pointer;
-      }
-      #jump-to-top-btn.visible {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0) scale(1);
-      }
-      #jump-to-top-btn:hover {
-        background: linear-gradient(135deg, #1e40af 60%, #2563eb 100%);
-        box-shadow: 0 8px 40px #2563eb55, 0 2px 8px #1e3a8a33;
-      }
-      #jump-to-top-btn svg {
-        width: 1.5em;
-        height: 1.5em;
-        display: block;
-      }
-      /* Jump to Top Button: always visible on all screen widths */
-      #jump-to-top-btn {
-      }
-      /* Responsive: ensure button is always visible and not hidden by media queries */
-      @media (max-width: 640px) {
-        #jump-to-top-btn {
-          bottom: 1.2rem;
-          right: 1.2rem;
-          width: 2.7rem;
-          height: 2.7rem;
-          font-size: 1.4rem;
-        }
-      }
-
-    body(class="bg-gray-900 text-gray-100 font-sans")
-      // ...existing code...
-      //- Jump to Top Button
-      button#jump-to-top-btn(type="button" aria-label="Jump to top")
-        svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-          path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7")
-
-    //- Scripts
-    script.
-      // ...existing code...
-      // Jump to Top Button logic
-      (function() {
-        const btn = document.getElementById('jump-to-top-btn');
-        function onScroll() {
+        if (window.__jumpToTopPatched) return; // Prevent double-patching
+        window.__jumpToTopPatched = true;
+        function showJumpToTopBtn() {
+          var btn = document.getElementById('jump-to-top-btn');
           if (!btn) return;
-          // Show after scrolling 0.5x viewport height
           if (window.scrollY > window.innerHeight * 0.5) {
             btn.classList.add('visible');
           } else {
             btn.classList.remove('visible');
           }
         }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll);
-        if (btn) {
-          btn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
-        }
+        window.addEventListener('scroll', showJumpToTopBtn, { passive: true });
+        window.addEventListener('resize', showJumpToTopBtn);
+        document.addEventListener('DOMContentLoaded', function() {
+          var btn = document.getElementById('jump-to-top-btn');
+          if (btn) {
+            btn.addEventListener('click', function() {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          }
+          showJumpToTopBtn();
+        });
       })();
