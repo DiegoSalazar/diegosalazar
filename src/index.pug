@@ -160,28 +160,3 @@ html(lang="en" class="dark")
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
     script(src="/diegosalazar/src/main.js")
-    script.
-      // Fallback for Jump to Top Button if main.js fails to load
-      (function() {
-        if (window.__jumpToTopPatched) return; // Prevent double-patching
-        window.__jumpToTopPatched = true;
-        function showJumpToTopBtn() {
-          var btn = document.getElementById('jump-to-top-btn');
-          var btnToc = document.getElementById('jump-to-top-btn-toc');
-          var show = window.scrollY > window.innerHeight * 0.5;
-          if (btn) btn.classList.toggle('visible', show);
-          if (btnToc) btnToc.classList.toggle('visible', show && window.innerWidth >= 1536);
-        }
-        window.addEventListener('scroll', showJumpToTopBtn, { passive: true });
-        window.addEventListener('resize', showJumpToTopBtn);
-        document.addEventListener('DOMContentLoaded', function() {
-          var btn = document.getElementById('jump-to-top-btn');
-          var btnToc = document.getElementById('jump-to-top-btn-toc');
-          function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-          if (btn) btn.addEventListener('click', scrollToTop);
-          if (btnToc) btnToc.addEventListener('click', scrollToTop);
-          showJumpToTopBtn();
-        });
-      })();

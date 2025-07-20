@@ -83,22 +83,25 @@
     }, 200);
   });
 })();
-// Jump to Top Button logic
+// Jump to Top Button logic (handles both main and TOC buttons)
 (function() {
-  const btn = document.getElementById('jump-to-top-btn');
-  function onScroll() {
-    if (!btn) return;
-    if (window.scrollY > window.innerHeight * 0.5) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
+  function showJumpToTopBtn() {
+    var btn = document.getElementById('jump-to-top-btn');
+    var btnToc = document.getElementById('jump-to-top-btn-toc');
+    var show = window.scrollY > window.innerHeight * 0.5;
+    if (btn) btn.classList.toggle('visible', show);
+    if (btnToc) btnToc.classList.toggle('visible', show && window.innerWidth >= 1536);
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  if (btn) {
-    btn.addEventListener('click', function() {
+  window.addEventListener('scroll', showJumpToTopBtn, { passive: true });
+  window.addEventListener('resize', showJumpToTopBtn);
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('jump-to-top-btn');
+    var btnToc = document.getElementById('jump-to-top-btn-toc');
+    function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+    }
+    if (btn) btn.addEventListener('click', scrollToTop);
+    if (btnToc) btnToc.addEventListener('click', scrollToTop);
+    showJumpToTopBtn();
+  });
 })();
