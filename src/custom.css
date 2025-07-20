@@ -200,8 +200,10 @@ header#home nav a {
   color: transparent;
   -webkit-text-fill-color: transparent;
   animation: gradient-move 7s cubic-bezier(0.4,0,0.2,1) infinite;
-  font-style: italic;
   font-weight: 500;
+}
+header#home nav a.animated-gradient {
+  font-style: normal !important;
 }
 @keyframes gradient-move {
   0% {
