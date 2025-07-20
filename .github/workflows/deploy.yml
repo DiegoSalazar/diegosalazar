@@ -7,25 +7,75 @@ on:
       - main
 
 jobs:
-  # build-and-deploy:
+  build:
+    runs-on: ubuntu-latest
+    environment: aws-deploy
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build website
+        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: aws-deploy
+    needs: build
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init
+        run: terraform -chdir=./terraform init -var="domain_name=${{ vars.DOMAIN_NAME }}"
+
+      - name: Terraform Apply
+        run: terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ vars.DOMAIN_NAME }}"
+
+      - name: Sync files to S3
+        run: aws s3 sync ./dist s3://${{ vars.DOMAIN_NAME }} --delete
+
+  refresh-cloudfront:
+    runs-on: ubuntu-latest
+    environment: aws-deploy
+    needs: ["build", "deploy"]
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+
+  # import-terraform-state:
   #   runs-on: ubuntu-latest
   #   environment: aws-deploy
+  #   # needs: ["build-and-deploy"]
   #   steps:
   #     - name: Checkout code
   #       uses: actions/checkout@v3
-
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '18'
-  #         cache: 'npm'
-  #         cache-dependency-path: 'package-lock.json'
-
-  #     - name: Install dependencies
-  #       run: npm install
-
-  #     - name: Build website
-  #       run: npm run build
 
   #     - name: Configure AWS Credentials
   #       uses: aws-actions/configure-aws-credentials@v2
@@ -42,59 +92,14 @@ jobs:
   #     - name: Terraform Init
   #       run: terraform -chdir=./terraform init -var="domain_name=${{ vars.DOMAIN_NAME }}"
 
-  #     - name: Terraform Apply
-  #       run: terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ vars.DOMAIN_NAME }}"
-
-  #     - name: Sync files to S3
-  #       run: aws s3 sync ./dist s3://${{ vars.DOMAIN_NAME }} --delete
-
-  # invalidate-cloudfront-cache:
-  #   runs-on: ubuntu-latest
-  #   environment: aws-deploy
-  #   needs: build-and-deploy # Ensure this runs after successful deployment
-  #   steps:
-  #     - name: Configure AWS Credentials
-  #       uses: aws-actions/configure-aws-credentials@v2
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: us-east-1
-
-  #     - name: Invalidate CloudFront Cache
+  #     - name: Import Resources (Manual Step)
   #       run: |
-  #         aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
-
-  import-terraform-state:
-    runs-on: ubuntu-latest
-    environment: aws-deploy
-    # needs: ["build-and-deploy"]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.5.0
-
-      - name: Terraform Init
-        run: terraform -chdir=./terraform init -var="domain_name=${{ vars.DOMAIN_NAME }}"
-
-      - name: Import Resources (Manual Step)
-        run: |
-          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
-          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_versioning.site_versioning ${{ vars.DOMAIN_NAME }}
-          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_public_access_block.site ${{ vars.DOMAIN_NAME }}
-          # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_cloudfront_origin_access_identity.oai E2FFAEUQUL5V2U
-          terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_policy.site ${{ vars.DOMAIN_NAME }}
-          terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_cloudfront_distribution.s3_distribution E3IFWLA43CYHKX
-      - name: Terraform Plan and Apply (after import)
-        run: |
-          terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ vars.DOMAIN_NAME }}"
+  #         # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket.site ${{ vars.DOMAIN_NAME }}
+  #         # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_versioning.site_versioning ${{ vars.DOMAIN_NAME }}
+  #         # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_public_access_block.site ${{ vars.DOMAIN_NAME }}
+  #         # terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_cloudfront_origin_access_identity.oai E2FFAEUQUL5V2U
+  #         terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_s3_bucket_policy.site ${{ vars.DOMAIN_NAME }}
+  #         terraform -chdir=./terraform import -var="domain_name=${{ vars.DOMAIN_NAME }}" aws_cloudfront_distribution.s3_distribution E3IFWLA43CYHKX
+  #     - name: Terraform Plan and Apply (after import)
+  #       run: |
+  #         terraform -chdir=./terraform apply -auto-approve -var="domain_name=${{ vars.DOMAIN_NAME }}"
