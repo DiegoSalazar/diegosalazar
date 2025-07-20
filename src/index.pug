@@ -6,6 +6,8 @@ html(lang="en" class="dark")
     title= `${cv.basics.name} | ${cv.basics.label}`
     link(rel="stylesheet", href="styles.css")
     link(rel="stylesheet", href="/diegosalazar/src/custom.css")
+    //- Font Awesome CDN for reliable icon rendering
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css")
     link(rel="preconnect", href="https://fonts.googleapis.com")
     link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap", rel="stylesheet")
@@ -168,8 +170,6 @@ html(lang="en" class="dark")
     include sections/contact.pug
     //- Jump to Top Button
     include sections/jump-to-top-btn.pug
-    //- Font Awesome for social icons
-    script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
     script(src="/diegosalazar/src/main.js")
     //- TODO: Blog/articles section in the future
     //- TODO: Add privacy-friendly analytics (see custom.css for reduced motion)
