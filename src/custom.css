@@ -44,6 +44,9 @@ body {
     box-shadow: none;
     backdrop-filter: blur(8px);
   }
+  #toc, #toc * {
+    color: #f3f8ff !important;
+  }
   @keyframes fade-in-toc {
     from { opacity: 0; transform: translateX(-40px); }
     to { opacity: 1; transform: translateX(0); }
@@ -161,6 +164,9 @@ header#home nav a {
   border: none;
   outline: none;
   cursor: pointer;
+}
+#jump-to-top-btn, #jump-to-top-btn .jump-to-top-label {
+  color: #f3f8ff !important;
 }
 #jump-to-top-btn.visible {
   opacity: 1;
