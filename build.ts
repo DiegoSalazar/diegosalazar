@@ -57,6 +57,15 @@ async function build(): Promise<void> {
       console.log('custom.css copied.');
     }
 
+    // Copy main.js to dist
+    const srcMainJsPath = path.join(srcDir, 'main.js');
+    const distMainJsPath = path.join(distDir, 'main.js');
+    if (fs.existsSync(srcMainJsPath)) {
+      console.log('Copying main.js...');
+      await fs.copy(srcMainJsPath, distMainJsPath);
+      console.log('main.js copied.');
+    }
+
     console.log('✅ Build successful! Your site is ready in the /dist folder.');
 
   } catch (error) {
