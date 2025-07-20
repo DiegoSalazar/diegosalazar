@@ -99,7 +99,7 @@ html(lang="en" class="dark")
             h2(class="text-3xl md:text-4xl font-bold tracking-tighter mb-12") Testimonials
             div(class="space-y-8")
               each ref in cv.references
-                div(class="bg-gray-800 p-6 rounded-lg shadow-lg")
+                div(class="bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105")
                   blockquote(class="border-l-4 border-blue-500 pl-4")
                     p(class="text-gray-300 italic")= ref.reference
                     footer(class="mt-4")
