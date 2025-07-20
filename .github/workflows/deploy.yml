@@ -84,6 +84,9 @@ jobs:
       - name: Sync files to S3
         run: aws s3 sync ./dist s3://${{ vars.DOMAIN_NAME }} --delete
 
+      - name: List dist/assets directory
+        run: ls -l ./dist/assets
+
       - name: Upload Resume PDF to Public Bucket
         run: aws s3 cp ./dist/assets/DiegoSalazar-Resume.pdf s3://diegosalazar-resume-public/DiegoSalazar-Resume.pdf --acl public-read
 
