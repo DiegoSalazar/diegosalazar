@@ -216,3 +216,82 @@ header#home nav a.animated-gradient {
     background-position: 0% 50%;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* Light/Dark mode toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 100;
+  background: #1e293b;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #0002;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle.light {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+body.light {
+  background-color: #f8fafc;
+  color: #1e293b;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.07"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%239ca3af" stroke-width="0.4"/></g><g opacity="0.13"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%239ca3af" stroke-width="0.7"/></g><g opacity="0.10"><circle cx="32" cy="32" r="0.7" fill="%239ca3af"/><circle cx="0" cy="0" r="0.7" fill="%239ca3af"/><circle cx="0" cy="32" r="0.7" fill="%239ca3af"/><circle cx="32" cy="0" r="0.7" fill="%239ca3af"/><circle cx="32" cy="64" r="0.7" fill="%239ca3af"/><circle cx="64" cy="32" r="0.7" fill="%239ca3af"/><circle cx="64" cy="0" r="0.7" fill="%239ca3af"/><circle cx="0" cy="64" r="0.7" fill="%239ca3af"/><circle cx="64" cy="64" r="0.7" fill="%239ca3af"/></g></svg>'),
+    linear-gradient(180deg, #e0e7ef 0%, #f8fafc 60%, #f8fafc 100%);
+  background-size: 64px 64px, cover;
+  background-repeat: repeat, no-repeat;
+  background-attachment: fixed;
+  background-position: top center, center;
+}
+body.light header#home {
+  background-image:
+    url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.09"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%239ca3af" stroke-width="0.4"/></g><g opacity="0.18"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%239ca3af" stroke-width="0.7"/></g><g opacity="0.13"><circle cx="32" cy="32" r="0.7" fill="%239ca3af"/><circle cx="0" cy="0" r="0.7" fill="%239ca3af"/><circle cx="0" cy="32" r="0.7" fill="%239ca3af"/><circle cx="32" cy="0" r="0.7" fill="%239ca3af"/><circle cx="32" cy="64" r="0.7" fill="%239ca3af"/><circle cx="64" cy="32" r="0.7" fill="%239ca3af"/><circle cx="64" cy="0" r="0.7" fill="%239ca3af"/><circle cx="0" cy="64" r="0.7" fill="%239ca3af"/><circle cx="64" cy="64" r="0.7" fill="%239ca3af"/></g></svg>'),
+    linear-gradient(180deg, #b6c3d6 0%, #cbd5e1 30%, #e0e7ef 60%, #f8fafc 100%);
+  background-size: 64px 64px, cover;
+  background-repeat: repeat, no-repeat;
+  background-position: top center, center;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+body.light section#contact, body.light .contact-section, body.light footer {
+  background: #e0e7ef !important;
+  color: #1e293b !important;
+  box-shadow: 0 2px 16px #cbd5e1cc;
+}
+body.light section#contact h2, body.light section#contact h3, body.light section#contact label {
+  color: #0f172a !important;
+}
+body.light section#contact p, body.light section#contact a, body.light section#contact input, body.light section#contact textarea {
+  color: #334155 !important;
+}
+body.light h1, body.light h2, body.light h3, body.light h4, body.light h5, body.light h6 {
+  color: #0f172a !important;
+}
+body.light p, body.light li, body.light span, body.light .prose, body.light .text-gray-400, body.light .text-gray-300 {
+  color: #111827 !important;
+}
+body.light .bg-gray-800 {
+  background-color: #e5e7eb !important;
+}
+body.light .border-gray-700 {
+  border-color: #cbd5e1 !important;
+}
+body.light .text-blue-400 {
+  color: #2563eb !important;
+}
+body.light .text-gray-900 {
+  color: #0f172a !important;
+}

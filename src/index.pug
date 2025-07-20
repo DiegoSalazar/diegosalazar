@@ -9,14 +9,26 @@ html(lang="en" class="dark")
     link(rel="preconnect", href="https://fonts.googleapis.com")
     link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap", rel="stylesheet")
+    meta(name="description", content="Diego Salazar – Software Engineer, Full Stack Developer, and AI Enthusiast. Portfolio, resume, and contact information.")
+    meta(property="og:title", content="Diego Salazar | Software Engineer Portfolio")
+    meta(property="og:description", content="Diego Salazar – Software Engineer, Full Stack Developer, and AI Enthusiast. Portfolio, resume, and contact information.")
+    meta(property="og:type", content="website")
+    meta(property="og:url", content="https://diegosalazar.dev/")
+    meta(property="og:image", content="https://diegosalazar.dev/og-image.png")
+    meta(name="twitter:card", content="summary_large_image")
+    meta(name="twitter:title", content="Diego Salazar | Software Engineer Portfolio")
+    meta(name="twitter:description", content="Diego Salazar – Software Engineer, Full Stack Developer, and AI Enthusiast. Portfolio, resume, and contact information.")
+    meta(name="twitter:image", content="https://diegosalazar.dev/og-image.png")
 
-  body(class="bg-gray-900 text-gray-100 font-sans")
-    //- Sticky Section Header (Animated, only for < 1536px and only after hero is out of view)
-    include sections/sticky-header.pug
-    //- Table of Contents (Wide screens only, only after hero is out of view)
-    include sections/toc.pug
+  body(class="bg-gray-900 text-gray-100 font-sans" aria-label="Diego Salazar Portfolio")
+    //- Accessibility: Add nav landmarks and aria-labels
+    nav(aria-label="Main navigation")
+      include sections/sticky-header.pug
+    nav(aria-label="Table of contents")
+      include sections/toc.pug
     //- Header & Hero Section
-    include sections/hero.pug
+    main(id="main-content" tabindex="-1")
+      include sections/hero.pug
     //- Main Content Wrapper
     div(class="main-content-wrapper container mx-auto px-4 sm:px-6 py-20 transition-all duration-500" style="max-width:1100px;margin-left:auto;margin-right:auto;" 2xl:style="max-width:1100px;margin-left:calc(15rem + 2vw);margin-right:auto;")
       div(class="lg:grid lg:grid-cols-3 lg:gap-12")
@@ -156,7 +168,29 @@ html(lang="en" class="dark")
     include sections/contact.pug
     //- Jump to Top Button
     include sections/jump-to-top-btn.pug
-
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
     script(src="/diegosalazar/src/main.js")
+    //- TODO: Blog/articles section in the future
+    //- TODO: Add privacy-friendly analytics (see custom.css for reduced motion)
+    //- Theme toggle button (light/dark mode)
+    button.theme-toggle(type="button" aria-label="Toggle light/dark mode") Light/Dark
+    script.
+      // Theme toggle logic
+      (function() {
+        var btn = document.querySelector('.theme-toggle');
+        if (!btn) return;
+        function setTheme(light) {
+          document.body.classList.toggle('light', light);
+          btn.classList.toggle('light', light);
+          localStorage.setItem('theme', light ? 'light' : 'dark');
+        }
+        btn.addEventListener('click', function() {
+          setTheme(!document.body.classList.contains('light'));
+        });
+        // On load, set theme from localStorage or system
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || (saved === null && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+          setTheme(true);
+        }
+      })();
