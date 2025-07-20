@@ -59,7 +59,7 @@ resource "aws_s3_bucket_policy" "site" {
       {
         Effect    = "Allow"
         Principal = {
-          AWS = aws_cloudfront_origin_access_identity.oai.iam_arn
+          AWS = data.aws_cloudfront_origin_access_identity.oai.iam_arn
         }
         Action   = "s3:GetObject"
         Resource = "${aws_s3_bucket.site.arn}/*"
