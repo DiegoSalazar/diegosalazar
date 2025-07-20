@@ -174,23 +174,27 @@ html(lang="en" class="dark")
     //- TODO: Blog/articles section in the future
     //- TODO: Add privacy-friendly analytics (see custom.css for reduced motion)
     //- Theme toggle button (light/dark mode)
-    button.theme-toggle(type="button" aria-label="Toggle light/dark mode") Light/Dark
+    button.theme-toggle(type="button" aria-label="Toggle light/dark mode")
+      span.theme-toggle-label Dark Mode
     script.
       // Theme toggle logic
       (function() {
         var btn = document.querySelector('.theme-toggle');
-        if (!btn) return;
+        var label = btn && btn.querySelector('.theme-toggle-label');
         function setTheme(light) {
           document.body.classList.toggle('light', light);
           btn.classList.toggle('light', light);
           localStorage.setItem('theme', light ? 'light' : 'dark');
+          if (label) label.textContent = light ? 'Dark Mode' : 'Light Mode';
         }
-        btn.addEventListener('click', function() {
+        btn && btn.addEventListener('click', function() {
           setTheme(!document.body.classList.contains('light'));
         });
         // On load, set theme from localStorage or system
         var saved = localStorage.getItem('theme');
         if (saved === 'light' || (saved === null && window.matchMedia('(prefers-color-scheme: light)').matches)) {
           setTheme(true);
+        } else {
+          setTheme(false);
         }
       })();
