@@ -51,11 +51,25 @@ body {
     from { opacity: 0; transform: translateX(-40px); }
     to { opacity: 1; transform: translateX(0); }
   }
+  .toc-link {
+    position: relative;
+    display: block;
+    color: #d1d5db;
+    transition: color 0.2s;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    z-index: 1;
+  }
   .toc-link.toc-active {
     color: #60a5fa !important;
     font-weight: 700;
     background: linear-gradient(90deg, #1e293b 60%, #2563eb22 100%);
     border-radius: 0.5rem;
+    background-size: 200% auto;
+    animation: toc-gradient-move 2.5s cubic-bezier(0.4,0,0.2,1) infinite;
+    z-index: 2;
   }
   .toc-link.toc-active::before {
     content: '';
@@ -69,22 +83,15 @@ body {
     background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
     box-shadow: 0 0 8px #3b82f6cc;
     transition: all 0.3s;
+    z-index: 3;
   }
-  .toc-link {
-    position: relative;
-    transition: color 0.2s, background 0.2s;
+  .toc-link::after {
+    display: none;
   }
-  .toc-link:hover {
-    color: #93c5fd;
-    background: #1e293b44;
-  }
-  #toc.opacity-0 {
-    opacity: 0;
-    pointer-events: none;
-  }
-  #toc.opacity-100 {
-    opacity: 1;
-    pointer-events: auto;
+  @keyframes toc-gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
   .main-content-wrapper {
     max-width: 1100px;
@@ -271,7 +278,7 @@ body.light header#home {
     url('data:image/svg+xml;utf8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.09"><path d="M8 0v64M16 0v64M24 0v64M32 0v64M40 0v64M48 0v64M56 0v64M0 8h64M0 16h64M0 24h64M0 32h64M0 40h64M0 48h64M0 56h64" stroke="%239ca3af" stroke-width="0.4"/></g><g opacity="0.18"><path d="M0 0h64v64H0V0M32 0v64M0 32h64" stroke="%239ca3af" stroke-width="0.7"/></g><g opacity="0.13"><circle cx="32" cy="32" r="0.7" fill="%239ca3af"/><circle cx="0" cy="0" r="0.7" fill="%239ca3af"/><circle cx="0" cy="32" r="0.7" fill="%239ca3af"/><circle cx="32" cy="0" r="0.7" fill="%239ca3af"/><circle cx="32" cy="64" r="0.7" fill="%239ca3af"/><circle cx="64" cy="32" r="0.7" fill="%239ca3af"/><circle cx="64" cy="0" r="0.7" fill="%239ca3af"/><circle cx="0" cy="64" r="0.7" fill="%239ca3af"/><circle cx="64" cy="64" r="0.7" fill="%239ca3af"/></g></svg>'),
     linear-gradient(180deg, #b6c3d6 0%, #cbd5e1 30%, #e0e7ef 60%, #f8fafc 100%);
   background-size: 64px 64px, cover;
-  background-repeat: repeat, no-repeat;
+  background-repeat: no-repeat;
   background-position: top center, center;
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
