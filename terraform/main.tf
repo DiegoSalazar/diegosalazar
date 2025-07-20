@@ -48,6 +48,7 @@ resource "aws_s3_bucket_public_access_block" "site" {
 }
 
 resource "aws_cloudfront_origin_access_identity" "oai" {
+  id      = "E243SUDK8DM61L"
   comment = "OAI for ${var.domain_name}"
 }
 
