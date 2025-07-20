@@ -7,29 +7,48 @@ html(lang="en" class="dark")
     link(rel="stylesheet", href="styles.css")
     link(rel="preconnect", href="https://fonts.googleapis.com")
     link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap", rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap", rel="stylesheet")
     style.
       html { scroll-behavior: smooth; }
+      .font-montserrat { font-family: 'Montserrat', 'Inter', sans-serif; }
 
   body(class="bg-gray-900 text-gray-100 font-sans")
+    //- Sticky Section Header (Animated, only for < 1536px and only after hero is out of view)
+    div#sticky-section-header(class="fixed top-0 left-0 w-full z-40 pointer-events-none transition-all duration-500 ease-in-out opacity-0 translate-y-[-100%] bg-gradient-to-b from-blue-900/90 to-transparent backdrop-blur-md shadow-lg 2xl:hidden")
+      h2(class="text-xl md:text-2xl font-bold tracking-tight text-white px-6 py-3 mx-auto max-w-4xl transition-all duration-500 ease-in-out")
+        |
+    //- Table of Contents (Wide screens only, only after hero is out of view)
+    aside#toc(class="hidden 2xl:flex flex-col fixed top-32 left-0 z-30 w-60 px-4 py-6 h-[70vh] bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-transparent border-r-2 border-gray-800/60 shadow-none rounded-r-xl gap-2 opacity-0 pointer-events-none transition-opacity duration-500 backdrop-blur-md invisible" style="animation:none;")
+      h3(class="text-base font-bold text-blue-400 mb-3 tracking-wide uppercase opacity-80") Table of Contents
+      ul(class="flex flex-col gap-1 text-gray-300 text-base font-medium")
+        li
+          a(href="#about" data-section="about" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") About Me
+        li
+          a(href="#experience" data-section="experience" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Experience
+        li
+          a(href="#projects" data-section="projects" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Personal Projects
+        li
+          a(href="#testimonials" data-section="testimonials" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Testimonials
+        li
+          a(href="#contact" data-section="contact" class="toc-link px-2 py-1 rounded transition-colors duration-300 relative") Contact
     //- Header & Hero Section
     header#home(class="bg-gradient-to-b from-blue-900 via-blue-800/60 to-gray-900 bg-no-repeat bg-cover")
       div(class="container mx-auto px-6 py-20")
         div(class="flex flex-col items-center text-center")
           img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg object-cover")
-          h1(class="text-4xl md:text-6xl font-bold tracking-tighter")= cv.basics.name
-          h2(class="text-xl md:text-2xl text-gray-400 mt-2")= cv.basics.label
+          h1(class="text-4xl md:text-6xl font-bold tracking-tight drop-shadow-xl font-montserrat")= cv.basics.name
+          h2(class="text-xl md:text-2xl text-gray-400 mt-6 drop-shadow")= cv.basics.label
           if cv.basics.tagline
-            p(class="text-lg text-gray-500 mt-4 italic")= cv.basics.tagline
-          nav(class="mt-8 flex flex-wrap justify-center gap-4")
-            a(href="#about" class="text-gray-300 hover:text-white transition-colors px-3 py-1") About
-            a(href="#projects" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Projects
-            a(href="#experience" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Experience
-            a(href="#testimonials" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Testimonials
-            a(href="#contact" class="text-gray-300 hover:text-white transition-colors px-3 py-1") Contact
+            p(class="text-lg text-gray-500 mt-4 italic drop-shadow-sm")= cv.basics.tagline
+          nav(class="mt-8 flex flex-wrap justify-center gap-4 drop-shadow-md")
+            a(href="#about" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") About
+            a(href="#projects" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Projects
+            a(href="#experience" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Experience
+            a(href="#testimonials" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Testimonials
+            a(href="#contact" class="relative text-gray-300 hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Contact
 
     //- Main Content Wrapper
-    div(class="container mx-auto px-6 py-20")
+    div(class="main-content-wrapper container mx-auto px-4 sm:px-6 py-20 transition-all duration-500" style="max-width:1100px;margin-left:auto;margin-right:auto;" 2xl:style="max-width:1100px;margin-left:calc(15rem + 2vw);margin-right:auto;")
       div(class="lg:grid lg:grid-cols-3 lg:gap-12")
         //- Left/Main Column
         main(class="lg:col-span-2")
@@ -148,3 +167,176 @@ html(lang="en" class="dark")
 
     //- Font Awesome for social icons
     script(src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous")
+    //- Sticky Header & TOC Scroll Logic
+    script.
+      // Sticky Section Header & TOC logic
+      (function() {
+        const sectionIds = ['about', 'experience', 'projects', 'testimonials', 'contact'];
+        const sectionTitles = {
+          about: 'About Me',
+          experience: 'Work Experience',
+          projects: 'Personal Projects',
+          testimonials: 'Testimonials',
+          contact: 'Get in Touch',
+        };
+        const header = document.getElementById('sticky-section-header');
+        const headerH2 = header ? header.querySelector('h2') : null;
+        const toc = document.getElementById('toc');
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const heroSection = document.getElementById('home');
+        let lastSection = null;
+        let tocWasShown = false;
+        function isHeroOutOfView() {
+          if (!heroSection) return false;
+          const rect = heroSection.getBoundingClientRect();
+          return rect.bottom <= 80;
+        }
+        function isAtPageBottom() {
+          return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2);
+        }
+        function onScroll() {
+          let current = null;
+          for (const id of sectionIds) {
+            const el = document.getElementById(id);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top <= 80) current = id;
+            }
+          }
+          if (!current) current = sectionIds[0];
+          // If at page bottom, always highlight 'contact'
+          if (isAtPageBottom()) {
+            current = 'contact';
+          }
+          // Show/hide sticky header for < 1536px only after hero is out of view
+          if (header && headerH2) {
+            if (window.innerWidth < 1536 && isHeroOutOfView()) {
+              headerH2.textContent = sectionTitles[current];
+              header.classList.remove('opacity-0', 'translate-y-[-100%]');
+              header.classList.add('opacity-100', 'translate-y-0');
+            } else {
+              header.classList.add('opacity-0', 'translate-y-[-100%]');
+              header.classList.remove('opacity-100', 'translate-y-0');
+            }
+          }
+          // Show/hide TOC for >= 1536px only after hero is out of view
+          if (toc) {
+            if (window.innerWidth >= 1536 && isHeroOutOfView()) {
+              toc.classList.remove('opacity-0', 'pointer-events-none');
+              toc.classList.add('opacity-100');
+              tocWasShown = true;
+            } else {
+              toc.classList.add('opacity-0', 'pointer-events-none');
+              toc.classList.remove('opacity-100');
+            }
+          }
+          // Highlight TOC links
+          if (lastSection !== current) {
+            lastSection = current;
+            tocLinks.forEach(link => {
+              if (link.dataset.section === current) {
+                link.classList.add('text-blue-400', 'font-bold', 'toc-active');
+              } else {
+                link.classList.remove('text-blue-400', 'font-bold', 'toc-active');
+              }
+            });
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        window.addEventListener('DOMContentLoaded', () => {
+          // Hide TOC on load
+          if (toc) {
+            toc.classList.add('opacity-0', 'pointer-events-none', 'invisible');
+            toc.classList.remove('opacity-100');
+            toc.style.animation = 'none';
+          }
+          setTimeout(() => {
+            if (toc) toc.classList.remove('invisible');
+            onScroll();
+          }, 200);
+        });
+      })();
+    style.
+      /* Sticky Section Header Animations */
+      #sticky-section-header {
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      #sticky-section-header.opacity-100 {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      /* TOC Animations & Highlight */
+      @media (min-width: 1536px) {
+        #toc {
+          display: flex;
+          animation: fade-in-toc 0.7s cubic-bezier(0.4,0,0.2,1);
+          background: linear-gradient(120deg, #0f172aee 60%, #1e293bee 100%);
+          border-right: 2px solid #33415599;
+          box-shadow: none;
+          backdrop-filter: blur(8px);
+        }
+        @keyframes fade-in-toc {
+          from { opacity: 0; transform: translateX(-40px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        .toc-link.toc-active {
+          color: #60a5fa !important; /* blue-400 */
+          font-weight: 700;
+          background: linear-gradient(90deg, #1e293b 60%, #2563eb22 100%);
+          border-radius: 0.5rem;
+        }
+        .toc-link.toc-active::before {
+          content: '';
+          position: absolute;
+          left: -10px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 4px;
+          height: 28px;
+          border-radius: 6px;
+          background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+          box-shadow: 0 0 8px #3b82f6cc;
+          transition: all 0.3s;
+        }
+        .toc-link {
+          position: relative;
+          transition: color 0.2s, background 0.2s;
+        }
+        .toc-link:hover {
+          color: #93c5fd;
+          background: #1e293b44;
+        }
+        #toc.opacity-0 {
+          opacity: 0;
+          pointer-events: none;
+        }
+        #toc.opacity-100 {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        /* Main content wrapper: allow space for sidebar, prevent overflow */
+        .main-content-wrapper {
+          max-width: 1100px;
+          margin-left: calc(15rem + 2vw);
+          margin-right: auto;
+          box-sizing: border-box;
+          overflow-x: visible;
+        }
+        body {
+          overflow-x: hidden;
+        }
+      }
+      /* For screens < 1536px, center content with normal padding, no sidebar space needed */
+      @media (max-width: 1535px) {
+        .main-content-wrapper {
+          margin-left: auto !important;
+          margin-right: auto !important;
+          max-width: 1100px !important;
+          padding-left: 2em !important;
+          padding-right: 2em !important;
+        }
+      }
