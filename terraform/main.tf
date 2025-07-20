@@ -63,13 +63,13 @@ resource "aws_s3_bucket_policy" "site" {
         }
         Action   = "s3:GetObject"
         Resource = "${aws_s3_bucket.site.arn}/*"
-      },
-      {
-        Effect    = "Allow"
-        Principal = "*"
-        Action   = "s3:GetObject"
-        Resource = "${aws_s3_bucket.site.arn}/assets/DiegoSalazar-Resume.pdf"
       }
+      # {
+      #   Effect    = "Allow"
+      #   Principal = "*"
+      #   Action   = "s3:GetObject"
+      #   Resource = "${aws_s3_bucket.site.arn}/assets/DiegoSalazar-Resume.pdf"
+      # }
     ]
   })
 }
