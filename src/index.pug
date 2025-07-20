@@ -442,3 +442,85 @@ html(lang="en" class="dark")
           0 1px 0 rgba(0,0,0,0.18),
           0 0 1px #fff2;
       }
+      /* Jump to Top Button */
+      #jump-to-top-btn {
+        position: fixed;
+        bottom: 2.5rem;
+        right: 2.5rem;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        background: linear-gradient(135deg, #2563eb 60%, #1e3a8a 100%);
+        color: #fff;
+        border-radius: 9999px;
+        box-shadow: 0 6px 32px rgba(16,32,64,0.25), 0 2px 8px rgba(30,58,138,0.18);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s, transform 0.3s;
+        transform: translateY(40px) scale(0.95);
+        font-size: 2rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+      #jump-to-top-btn.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+      #jump-to-top-btn:hover {
+        background: linear-gradient(135deg, #1e40af 60%, #2563eb 100%);
+        box-shadow: 0 8px 40px #2563eb55, 0 2px 8px #1e3a8a33;
+      }
+      #jump-to-top-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        display: block;
+      }
+      /* Jump to Top Button: always visible on all screen widths */
+      #jump-to-top-btn {
+      }
+      /* Responsive: ensure button is always visible and not hidden by media queries */
+      @media (max-width: 640px) {
+        #jump-to-top-btn {
+          bottom: 1.2rem;
+          right: 1.2rem;
+          width: 2.7rem;
+          height: 2.7rem;
+          font-size: 1.4rem;
+        }
+      }
+
+    body(class="bg-gray-900 text-gray-100 font-sans")
+      // ...existing code...
+      //- Jump to Top Button
+      button#jump-to-top-btn(type="button" aria-label="Jump to top")
+        svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+          path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7")
+
+    //- Scripts
+    script.
+      // ...existing code...
+      // Jump to Top Button logic
+      (function() {
+        const btn = document.getElementById('jump-to-top-btn');
+        function onScroll() {
+          if (!btn) return;
+          // Show after scrolling 0.5x viewport height
+          if (window.scrollY > window.innerHeight * 0.5) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        if (btn) {
+          btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      })();
