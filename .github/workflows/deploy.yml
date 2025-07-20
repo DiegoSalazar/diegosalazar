@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     environment: aws-deploy
     steps:
@@ -27,11 +27,6 @@ jobs:
       - name: Build website
         run: npm run build
 
-  deploy:
-    runs-on: ubuntu-latest
-    environment: aws-deploy
-    needs: build
-    steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -53,10 +48,10 @@ jobs:
       - name: Sync files to S3
         run: aws s3 sync ./dist s3://${{ vars.DOMAIN_NAME }} --delete
 
-  refresh-cloudfront:
+  invalidate-cloudfront-cache:
     runs-on: ubuntu-latest
     environment: aws-deploy
-    needs: ["build", "deploy"]
+    needs: build-and-deploy # Ensure this runs after successful deployment
     steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
