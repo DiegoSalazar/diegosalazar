@@ -117,6 +117,34 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 }
 
+resource "aws_s3_bucket" "resume_public" {
+  bucket = "diegosalazar-resume-public"
+  force_destroy = true
+}
+
+resource "aws_s3_bucket_public_access_block" "resume_public" {
+  bucket = aws_s3_bucket.resume_public.id
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_policy" "resume_public" {
+  bucket = aws_s3_bucket.resume_public.id
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = "*",
+        Action = "s3:GetObject",
+        Resource = "${aws_s3_bucket.resume_public.arn}/*"
+      }
+    ]
+  })
+}
+
 output "cloudfront_domain_name" {
   description = "The domain name of the CloudFront distribution"
   value       = aws_cloudfront_distribution.s3_distribution.domain_name
