@@ -54,11 +54,9 @@ body {
   .toc-link {
     position: relative;
     display: block;
-    color: #d1d5db;
     transition: color 0.2s;
     padding: 0.25rem 0.75rem;
     border-radius: 0.5rem;
-    font-weight: 500;
     font-size: 1rem;
     z-index: 1;
   }
@@ -252,8 +250,8 @@ header#home nav a.animated-gradient {
   border: none;
   border-radius: 9999px;
   padding: 0.6em 1.2em;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 600;
   box-shadow: 0 2px 8px #0002;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
