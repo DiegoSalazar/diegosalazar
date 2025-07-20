@@ -47,9 +47,8 @@ resource "aws_s3_bucket_public_access_block" "site" {
   restrict_public_buckets = true
 }
 
-resource "aws_cloudfront_origin_access_identity" "oai" {
-  id      = "E243SUDK8DM61L"
-  comment = "OAI for ${var.domain_name}"
+data "aws_cloudfront_origin_access_identity" "oai" {
+  id = "E243SUDK8DM61L"
 }
 
 resource "aws_s3_bucket_policy" "site" {
@@ -75,7 +74,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     origin_id   = "S3-${var.domain_name}"
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
+      origin_access_identity = data.aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
     }
   }
 
