@@ -1,20 +1,40 @@
-//- Header & Hero Section
-header#home(class="bg-gradient-to-b from-blue-900 via-blue-800/60 to-gray-900 bg-no-repeat bg-cover")
-  div(class="container mx-auto px-6 py-20")
-    div(class="flex flex-col items-center text-center")
-      img(src=cv.basics.image, alt="Profile Picture", class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg object-cover")
-      h1(class="text-4xl md:text-6xl font-bold tracking-tight drop-shadow-xl font-montserrat")= cv.basics.name
-      h2(class="text-xl md:text-2xl text-gray-400 mt-6 drop-shadow")= cv.basics.label
-      if cv.basics.tagline
-        - const isPackLight = cv.basics.tagline && cv.basics.tagline.startsWith('Pack light');
-        if isPackLight
-          p(class="text-lg text-gray-500 mt-4 italic drop-shadow-sm animated-gradient-tagline")= cv.basics.tagline
-        else
-          p(class="text-lg text-gray-500 mt-4 italic drop-shadow-sm")= cv.basics.tagline
-      nav(class="mt-8 flex flex-wrap justify-center gap-4 drop-shadow-md")
-        a(href="#about" class="relative hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") About
-        a(href="#experience" class="relative hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Experience
-        a(href="#projects" class="relative hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Projects
-        a(href="#volunteer" class="relative hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Volunteer
-        a(href="#testimonials" class="relative hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Testimonials
-        a(href="#contact" class="relative hover:text-white transition-colors px-3 py-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full active:after:w-full after:rounded-full") Contact
+header#home.site-header
+  nav.site-nav(aria-label="Main navigation")
+    a.site-wordmark(href="#home" aria-label="Diego Salazar, home")
+      | DS
+      span.site-wordmark-dot .
+    div.nav-links
+      a(href="#about") About
+      a(href="#experience") Experience
+      a(href="#projects") Projects
+      a(href="#volunteer") Teaching
+      a(href="#details") Skills
+    a.nav-contact(href="#contact")
+      | Get in touch
+      span(aria-hidden="true") ↗
+
+  div.hero-wrap
+    div.hero-copy
+      p.eyebrow.hero-eyebrow= `Software engineer · ${cv.basics.location.city}, ${cv.basics.location.country}`
+      h1= cv.basics.name
+      p.hero-role= cv.basics.label
+      p.hero-intro= cv.basics.tagline
+      div.hero-actions
+        a.button.button-primary(href=cv.meta.resumeUrl, target="_blank", rel="noopener noreferrer")
+          | Download résumé
+          span(aria-hidden="true") ↗
+        a.button.button-quiet(href=`mailto:${cv.basics.email}`) Let's talk
+      div.hero-contact-line
+        a(href=`mailto:${cv.basics.email}`)= cv.basics.email
+        span.hero-contact-dot
+        a(href=`tel:${cv.basics.phone}`)= cv.basics.phone
+    div.hero-photo-wrap
+      img.hero-photo(src=cv.basics.image, alt=`Portrait of ${cv.basics.name}`)
+      div.hero-photo-caption
+        span.hero-status-dot
+        span Building AI-powered products & the platforms beneath them
+  div.hero-bottom
+    span 20 years of building for the web and beyond
+    a(href="#experience")
+      | Scroll to explore
+      span(aria-hidden="true") ↓

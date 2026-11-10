@@ -1,14 +1,13 @@
-# My Personal Site
+# Diego Salazar's Portfolio
 
-[diegosalazar.co](diegosalazar.co)
+[diegosalazar.co](https://diegosalazar.co)
 
-[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/DiegoSalazar/diegosalazar-co)
+## Build
 
-Contact
-=======
-[me@diegosalazar.co](mailto:me@diegosalazar.co)
+Install dependencies with `npm ci`, then run `npm run build`. The generated static site is written to `dist/`.
 
-Using
-=====
-* [Mootools](http://mootools.net/)
-* [Eye.js](https://github.com/Goutte/Eye)
+## Deploy to Netlify
+
+Connect this repository to a Netlify site. Netlify uses `netlify.toml` to run `npm run build` and publish `dist/`.
+
+Contact: [me@diegosalazar.co](mailto:me@diegosalazar.co)

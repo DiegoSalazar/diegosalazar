@@ -1,19 +1,21 @@
 {
   "basics": {
     "name": "Diego E. Salazar",
-    "label": "Senior Software Engineer",
+    "label": "Senior/Staff Software Engineer · AI & LLM product engineering · Full-stack + data platforms · Former VP of Engineering",
     "image": "assets/images/Diego Salazar - Headshot small.jpeg",
     "email": "me@diegosalazar.co",
+    "phone": "4046923919",
     "url": "https://diegosalazar.co",
-    "tagline": "Pack light, you'll find what you need on the way.",
+    "tagline": "I build AI-powered products and the platforms underneath them.",
     "summary": [
-      "Passionate about code quality, style, and maintainability. I enjoy teaching, playing music, and riding bikes. I started writing code back in the MySpace days (2006) tweaking HTML/CSS. In my job as an IT tech I realized a paper based method of record keeping could be made more efficient and less error prone if I created an app for it. I sat down to read a few chapters of PHP/MySQL and realized I was a natural at understanding code and logic. I fell in love with building apps and taught myself enough to get hired professionally as a web developer.",
-      "I continued soaking up books, articles, documentation, and QAs to get to where I am today. Now, I specialize in complex multi-process systems in service oriented architectures. I'm proficient in migrating monolithic Rails apps to hybrid service oriented designs. I write developer tools for automation and productivity.",
-      "I enthusiastically talk about code and mentor coworkers and juniors. I love conversing about science and I'll talk about the universe for hours."
+      "I build AI-powered products and the platforms underneath them, from hand-written HTML/CSS and React UIs to the infrastructure, data pipelines and databases behind them. I've been writing software for 20 years, both as a hands-on senior/staff engineer and as a VP of Engineering.",
+      "Recent work: At Sony Music, designing full-stack systems on AWS (React SPAs, ECS/Lambda, Aurora, Terraform, Jenkins) and re-architecting a sales-matching system to scale from gigabytes to terabytes. At Bloomberg Law, lead engineer on AI-powered legal document analysis, shipping GPT/LLM features in standalone apps and Microsoft Word add-ins on serverless AWS backends. At Kipu Health, VP of Engineering at a healthcare SaaS company, growing the team from 3 to 20 engineers and setting the architecture, policies and remote practices it scaled on.",
+      "I also build my own AI tooling, like AiSyncing, an open-source tool that backs up AI assistants' memories and configs every day. I'm at my best owning ambiguous problems end to end: untangling coupled systems, choosing a pragmatic architecture, and making the team around me faster. I've mentored interns and bootcamp students along the way, and I'm fluent in English and Spanish."
     ],
     "location": {
       "city": "New York",
-      "region": "New York"
+      "region": "New York",
+      "country": "United States"
     },
     "profiles": [
       {
@@ -73,50 +75,75 @@
       "name": "Sony Music Entertainment",
       "position": "Senior Software Engineer",
       "url": "https://www.sonymusic.com/",
-      "startDate": "2025",
+      "startDate": "April 2025",
       "endDate": "Present",
-      "summary": "Member of the Product Design Engineering group.",
+      "dateRange": "April 2025 – Present (1 year 8 months)",
+      "location": "United States",
+      "summary": "Senior engineer on Sony Music's PDE engineering team, designing and owning full-stack systems on AWS, from SPA frontends to the database layer.",
       "highlights": [
-        "Building and maintaining SaaS software for the Accounting and Royalties team.",
-        "Heavy use of Typescript, React, Docker, AWS, and LLMs/Agentic AI to build tools for devs and features for users."
-      ]
+        "Re-architected the sales-matching system to scale from gigabyte- to terabyte-scale data volumes.",
+        "Designed and architected full-stack systems spanning React SPA frontends, ECS- and Lambda-based backends, and Aurora MySQL/MariaDB databases.",
+        "Defined all infrastructure in Terraform, deployed through strict Jenkins pipelines and GitHub Actions workflows.",
+        "Identified and broke apart tightly coupled systems, simplifying the architecture and speeding up developer workflows."
+      ],
+      "stack": "TypeScript, Python (typed, mypy), React, Bash, HTML/CSS, AWS (ECS, Lambda, Aurora MySQL/MariaDB), Terraform, Jenkins, GitHub Actions"
     },
     {
-      "name": "Bloomberg",
+      "name": "Bloomberg Law",
       "position": "Senior Software Engineer",
       "url": "https://www.bna.com/bloomberglaw/",
-      "startDate": "2018",
-      "endDate": "2025",
-      "summary": "Member of the Bloomberg Law Web Products team developing a SaaS based legal research app.",
+      "startDate": "October 2018",
+      "endDate": "March 2025",
+      "dateRange": "October 2018 – March 2025 (6 years 6 months)",
+      "location": "New York, New York",
+      "summary": "Full-stack engineer on Bloomberg Law's Web Products team, then lead engineer on a new product team building AI-powered legal document analysis, owning architecture, UI/UX and APIs.",
       "highlights": [
-        "Working in an Agile software development team.",
-        "Developing full stack features in a containerized SOA environment."
-      ]
+        "Built GPT/LLM-powered document analysis features, shipping rich, responsive UIs in standalone apps and inside Microsoft products.",
+        "Built Microsoft Word add-ins with Office.js, bringing document analysis into lawyers' existing workflow.",
+        "Led architecture and implementation of serverless backends on AWS API Gateway and Lambda, with React and Vue SPAs on CloudFront and S3.",
+        "Lead engineer for infrastructure as code (Terraform, CDK) and CI/CD on GitHub and GitLab; decoupled frontend and backend releases with CDN-based SPA deploys.",
+        "Planned and led the migration from Rails-rendered pages to a Vue SPA backed by a JSON API.",
+        "Mentored interns and onboarded them to the Bloomberg Law stack; interviewer on the Diversity & Inclusion recruiting team."
+      ],
+      "stack": "TypeScript, React, Vue, Node.js, Ruby on Rails, Java, Python, PostgreSQL, Redis, AWS"
+    },
+    {
+      "name": "Trilogy Education",
+      "position": "Coding Mentor",
+      "startDate": "January 2019",
+      "endDate": "January 2022",
+      "dateRange": "January 2019 – January 2022 (3 years 1 month)",
+      "summary": "Mentoring web development bootcamp students."
     },
     {
       "name": "Kipu Health",
       "position": "Vice President of Engineering",
       "url": "http://kipusystems.com/",
-      "startDate": "2013",
-      "endDate": "2018",
-      "summary": "Kipu Health is a SAAS based medical software company specializing in EMR and lab integrations where I lead a team of software engineers and liaised with other departments and third parties. I was the goto senior engineer for programming help and questions from the team. I consulted the CTO on software related challenges. I was a lead architect on software projects. I improved collaboration and planning by researching and applying appropriate tools and processes. I mentored junior engineers and conducted code reviews and pair programming sessions. I'm was in charge of technical interviews and had a final say on hiring. I planned sprints, improved documentation and the onboarding process for new hires.",
+      "startDate": "September 2013",
+      "endDate": "September 2018",
+      "dateRange": "September 2013 – September 2018 (5 years 1 month)",
+      "location": "Miami, FL",
+      "summary": "Served as a lead architect on software projects for the SAAS-based healthcare software company. Provided leadership and guidance to a small team of software engineers that grew to ~20. Continuously researched and applied latest industry tools and processes. Performed code reviews and lead pair programming sessions. Oversaw the on-boarding process for new hires.",
       "highlights": [
-        "Lead the growth of a team of 3 software engineers into a team of 20, meanwhile the company grew from dozens to hundreds of clinical facility clients.",
-        "Instituted team policies and software tools for collaboration, communication, and remote work.",
-        "Designed and built a high reliability asynchronous API architecture supporting millions of request per second",
-        "Lead hiring, code reviews, and mentoring efforts"
+        "Successfully expanded a team of 3 software engineers into a team of 20.",
+        "Formulated and established team policies and software tools to optimize communication and remote work.",
+        "Designed a high reliability asynchronous API architecture supporting millions of requests per second."
       ]
     },
     {
       "name": "Octagon Commerce",
       "position": "Senior Software Engineer",
       "url": "https://www.1sale.com/",
-      "startDate": "2011",
-      "endDate": "2013",
-      "summary": "Architected a fault tolerant service oriented architecture framework. Lead internal software projects and pair programmed through feature development. Developed and maintained user facing features as well as internal apps. Was on standby for emergency situations and successfully debugged and fixed live production code on multiple occasions. Improved and refactored legacy code and tests. Presented research projects to the team to evangelize state of the art techniques and paradigms.",
+      "startDate": "October 2011",
+      "endDate": "August 2013",
+      "dateRange": "October 2011 – August 2013 (1 year 11 months)",
+      "location": "Miami-Fort Lauderdale Area",
       "highlights": [
-        "Designed and built a service oriented framework with asynchronous message passing and message delivery reliability.",
-        "Tasked with frontend and backend engineering projects."
+        "Spearheaded software projects, as well as front-end and back-end engineering projects.",
+        "Developed user facing features and internal apps.",
+        "Debugged and fixed live production code, and refactored legacy code.",
+        "Presented research projects to the team to promote the incorporation of cutting edge techniques.",
+        "Earned recognition for designing a fault tolerant service oriented architecture framework, as well as a service oriented framework with asynchronous message passing and message delivery reliability."
       ]
     },
     {
@@ -124,54 +151,75 @@
       "position": "Founding Engineer",
       "url": "https://usselfstorage.com/",
       "startDate": "2010",
-      "endDate": "2011",
-      "summary": "Architected an application framework from the ground up. Lead development of a new business. Created platform for admins, site owners, and users to efficiently search for and rent self storage units. Lead marketing efforts and provided direction on all matters of development and marketing in a startup environment. Setup office network with Active Directory and installed computes, a server, and backups.",
+      "endDate": "October 2011",
+      "dateRange": "2010 – October 2011 (1 year)",
+      "location": "Miami-Fort Lauderdale Area",
       "highlights": [
-        "Designed and built a SAAS platform for self storage marketing, search, and booking."
+        "Drove marketing efforts and provided strategic direction for the startup company.",
+        "Created a platform for administrators, site owners, and users to optimize their search efforts.",
+        "Successfully architected an application framework from the ground up.",
+        "Designed and built a SAAS platform for self storage marketing, searches, and bookings."
       ]
     },
     {
-      "name": "Grey Robot Inc.",
+      "name": "Grey Robot, Inc.",
       "position": "Founding Engineer",
       "url": "https://greyrobot.com/",
-      "startDate": "2009",
-      "endDate": "2011",
-      "summary": "Started as a freelancer and then teamed up with my brother and a friend to develop apps for businesses. Provided website and web app development services to small businesses and professionals. Developed a customizable and themable open source CMS system for reuse in all web app projects. Mentored an intern through sales and client meetings. Executed marketing and sales responsibilities. Provided maintenance and support. Performed devops duties and automation.",
+      "startDate": "January 2009",
+      "endDate": "March 2011",
+      "dateRange": "January 2009 – March 2011 (2 years 3 months)",
+      "location": "Miami-Fort Lauderdale Area",
       "highlights": [
-        "Built a highly customizable and theme-able Rails based Content Management System.",
-        "Used homebrewed CMS to launch client websites."
+        "Developed multiple cross-functional apps for businesses.",
+        "Delivered quality support in website and web app development to small businesses and professionals.",
+        "Performed devops duties and automation.",
+        "Developed a customizable and theme-able open source CMS system for reuse in all web app projects."
       ]
     },
     {
-      "name": "Rumbum LLC.",
+      "name": "Rumbum, LLC",
       "position": "Web Developer",
       "url": "https://rumbum.com/",
-      "startDate": "2009",
-      "endDate": "2010",
-      "summary": "Backend/Frontend Web Development."
+      "startDate": "September 2009",
+      "endDate": "June 2010",
+      "dateRange": "September 2009 – June 2010 (10 months)",
+      "location": "Miami",
+      "summary": "Maintained responsibility for back-end and front-end web development."
     },
     {
-      "name": "Port of Everglades, LLC.",
+      "name": "Port of Everglades",
       "position": "IT Technician",
       "url": "https://www.porteverglades.net/",
       "startDate": "2007",
       "endDate": "2008",
-      "summary": "Developed a mobile app for tracking ingress and egress of truck drivers in the port yard as an improvement of a paper based workflow. Provided IT support for the administrative office in the port. Ran and installed ethernet cabling, solar powered WIFI access points in key location in the port yard, and troubleshooted computer and various device issues. Installed an asset management system and registered all office assets."
+      "dateRange": "2007 – 2008 (1 year)",
+      "location": "Miami-Fort Lauderdale Area",
+      "highlights": [
+        "Developed a mobile app for tracking ingress and egress of truck drivers in the port yard as an improvement of a paper based workflow.",
+        "Provided IT support for the administrative office in the port.",
+        "Ran and installed ethernet cabling, solar powered WIFI access points in key location in the port yard, and troubleshooted computer and various device issues.",
+        "Installed an asset management system and registered all office assets."
+      ]
     },
     {
       "name": "LTC Global",
       "position": "Systems Administrator",
       "url": "http://www.ltcglobal.com",
-      "startDate": "2006",
-      "endDate": "2007",
-      "summary": "Install and maintain office network and workstations. Provide IT support to staff."
+      "startDate": "May 2006",
+      "endDate": "August 2007",
+      "dateRange": "May 2006 – August 2007 (1 year 4 months)",
+      "highlights": [
+        "Install and maintain office network and workstations.",
+        "Provide IT support to staff."
+      ]
     },
     {
       "name": "Intechcenter",
       "position": "IT Field Technician",
-      "startDate": "2005",
-      "endDate": "2006",
-      "summary": "Technical Support, Consulting, Network/Systems Administration, Network Planning and Implementation. Built PCs and servers. Managed office IT responsibilities for multiple private and commercial clients."
+      "startDate": "January 2005",
+      "endDate": "January 2006",
+      "dateRange": "January 2005 – January 2006 (1 year 1 month)",
+      "summary": "Maintained responsibility for the areas of technical support, consulting, network/systems administration, network planning and implementation, building PCs and servers, and executing IT responsibilities for multiple private and commercial clients."
     }
   ],
   "volunteer": [
@@ -185,20 +233,23 @@
   "education": [
     {
       "institution": "Palm Beach State College",
-      "area": "Mechanical Engineering",
-      "studyType": "Associate",
-      "startDate": "2005",
-      "endDate": "2006"
+      "area": "",
+      "studyType": "",
+      "dateRange": "2007 – 2010"
     },
     {
       "institution": "Google University",
-      "area": "Autodidact",
-      "studyType": "Self-study",
-      "startDate": "2005",
-      "endDate": "Present"
+      "institution": "Valencia College",
+      "area": "",
+      "studyType": "",
+      "dateRange": "2005 – 2006"
     }
   ],
   "projects": [
+    {
+      "name": "AiSyncing",
+      "summary": "Open-source tool that backs up AI assistants' memories and configs every day."
+    },
     {
       "name": "Conway's Game of Life",
       "summary": "An HTML5/Canvas/Javascript implementation of the famous cellular automaton Conway's Game of Life",
@@ -236,50 +287,26 @@
     }
   ],
   "skills": {
-    "summary": "Experienced software developer specializing in web applications and web services. Specialties: Backend development, API design, Service Oriented Architecture, large scale web services, server administration.",
-    "sets": [
-      {
-        "name": "Typescript",
-        "level": "Expert"
-      },
-      {
-        "name": "React",
-        "level": "Expert"
-      },
-      {
-        "name": "Python",
-        "level": "Expert"
-      },
-      {
-        "name": "Ruby on Rails",
-        "level": "Expert"
-      },
-      {
-        "name": "HTML5, CSS3, SASS",
-        "level": "Expert"
-      },
-      {
-        "name": "LLMs/Prompt Engineering",
-        "level": "Pro"
-      },
-      {
-        "name": "PostgreSQL, MySQL",
-        "level": "Pro"
-      },
-      {
-        "name": "Elixir",
-        "level": "Pro"
-      }
+    "summary": "Experienced in AI product engineering, generative AI, LLM evaluation, and the full-stack systems and data platforms behind AI-powered products.",
+    "topSkills": [
+      "Vector Databases",
+      "Generative AI",
+      "LLM Evaluation"
     ]
   },
   "languages": [
     {
       "language": "English",
-      "fluency": "Fluent"
+      "fluency": "Native or Bilingual"
     },
     {
       "language": "Spanish",
-      "fluency": "Native Speaker"
+      "fluency": "Native or Bilingual"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "HTML/CSS, JS and SQL"
     }
   ],
   "references": [
@@ -331,6 +358,8 @@
   ],
   "meta": {
     "resumeUrl": "assets/DiegoSalazar-Resume.pdf",
+    "description": "Diego E. Salazar is a senior/staff software engineer building AI-powered products, full-stack systems, and data platforms.",
+    "technologySummary": "TypeScript, Python, React, Vue, Node.js, Ruby on Rails, Java, Bash, HTML/CSS, PostgreSQL, Redis, AWS, Terraform, CDK, Jenkins, GitHub Actions, GitLab, Microsoft Office.js, Aurora MySQL/MariaDB.",
     "credits": [
       {
         "name": "Profile photo by Andrew Soria",
