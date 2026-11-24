@@ -11,7 +11,6 @@ header#home.site-header
       a(href="#details") Skills
     a.nav-contact(href="#contact")
       | Get in touch
-      span(aria-hidden="true") ↗
 
   div.hero-wrap
     div.hero-copy
@@ -19,15 +18,15 @@ header#home.site-header
       h1= cv.basics.name
       p.hero-role= cv.basics.label
       p.hero-intro= cv.basics.tagline
+      p.hero-availability= cv.basics.availability
       div.hero-actions
         a.button.button-primary(href=cv.meta.resumeUrl, target="_blank", rel="noopener noreferrer")
           | Download résumé
-          span(aria-hidden="true") ↗
         a.button.button-quiet(href=`mailto:${cv.basics.email}`) Let's talk
       div.hero-contact-line
         a(href=`mailto:${cv.basics.email}`)= cv.basics.email
         span.hero-contact-dot
-        a(href=`tel:${cv.basics.phone}`)= cv.basics.phone
+        a(href=`tel:${cv.basics.phone}`)= cv.basics.phoneDisplay || cv.basics.phone
     div.hero-photo-wrap
       img.hero-photo(src=cv.basics.image, alt=`Portrait of ${cv.basics.name}`)
       div.hero-photo-caption
@@ -37,4 +36,3 @@ header#home.site-header
     span 20 years of building for the web and beyond
     a(href="#experience")
       | Scroll to explore
-      span(aria-hidden="true") ↓

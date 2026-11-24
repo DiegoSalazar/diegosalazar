@@ -12,9 +12,8 @@ footer#contact.site-footer
       if cv.meta.resumeUrl
         a.button.button-outline(href=cv.meta.resumeUrl, target="_blank", rel="noopener noreferrer")
           | Download résumé
-          span(aria-hidden="true") ↗
     div.footer-bottom
       p © #{new Date().getFullYear()} #{cv.basics.name}
       nav.footer-socials(aria-label="Social profiles")
         each profile in cv.basics.profiles
-          a(href=profile.url, target="_blank", rel="noopener noreferrer")= profile.network + " ↗"
+          a(href=profile.url, target="_blank", rel="noopener noreferrer")= profile.network
