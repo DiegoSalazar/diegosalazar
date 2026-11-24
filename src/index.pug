@@ -4,9 +4,9 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(name="theme-color", content="#f5f3ed")
-    title= `${cv.basics.name} — Senior/Staff Software Engineer`
+    title= cv.meta.title
     meta(name="description", content=cv.meta.description)
-    meta(property="og:title", content=`${cv.basics.name} — Software Engineer`)
+    meta(property="og:title", content=cv.meta.title)
     meta(property="og:description", content=cv.meta.description)
     meta(property="og:type", content="website")
     meta(property="og:url", content=cv.basics.url)
@@ -22,6 +22,12 @@ html(lang="en")
     a.skip-link(href="#main-content") Skip to content
     include sections/hero.pug
     main#main-content.site-main
+      section.impact-section(aria-label="Selected career results")
+        each result in cv.impact
+          div.impact-item
+            p.impact-value= result.value
+            p.impact-label= result.label
+            p.impact-context= result.context
       section#about.page-section.about-section
         div.section-heading
           p.eyebrow 01 / A little about me
@@ -87,9 +93,9 @@ html(lang="en")
                 p= project.summary
                 div.project-links
                   if project.url
-                    a(href=project.url, target="_blank", rel="noopener noreferrer") View project ↗
+                    a(href=project.url, target="_blank", rel="noopener noreferrer") View project
                   if project.githubUrl
-                    a(href=project.githubUrl, target="_blank", rel="noopener noreferrer") Source ↗
+                    a(href=project.githubUrl, target="_blank", rel="noopener noreferrer") Source
 
       if cv.volunteer && cv.volunteer.length
         section#volunteer.page-section
@@ -150,6 +156,7 @@ html(lang="en")
               div.education-row
                 strong= course.institution
                 span= course.dateRange
+                p.detail-copy= course.studyType
 
     include sections/contact.pug
     include sections/jump-to-top-btn.pug

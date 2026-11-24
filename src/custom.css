@@ -113,6 +113,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e8835e; outline-offs
   line-height: 1.45;
 }
 .hero-intro { margin: 1rem 0 0; color: #e59a7d; font-size: 1rem; }
+.hero-availability { margin: 1rem 0 0; color: var(--paper); font-size: .875rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
 .button {
   display: inline-flex;
@@ -188,6 +189,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e8835e; outline-offs
 .hero-bottom a span { margin-left: .45rem; }
 
 .site-main { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+.impact-section { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding: 3rem 0; border-bottom: 1px solid var(--line); }
+.impact-value { margin: 0; font-family: var(--display); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; letter-spacing: -.045em; color: var(--accent-dark); }
+.impact-label { margin: .5rem 0 .25rem; font-size: 1rem; line-height: 1.5; }
+.impact-context { margin: 0; color: var(--muted); font-size: .875rem; }
 .page-section { padding: 6.6rem 0; border-bottom: 1px solid var(--line); }
 .section-heading { margin-bottom: 2.2rem; }
 .section-heading h2 {
@@ -362,4 +367,19 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e8835e; outline-offs
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Keep career details and navigation readable at every viewport size. */
+.nav-links a, .nav-contact, .button, .hero-contact-line, .hero-photo-caption,
+.eyebrow, .job-dates, .job-location, .job-stack, .project-links a,
+.skill-chip, .language-row, .education-row, .education-row span { font-size: .875rem; }
+.job-summary, .achievement-list li, .project-card p, .community-item > p,
+.testimonial-card blockquote, .detail-copy { font-size: 1rem; }
+.about-footnote, .hero-bottom, .footer-location, .footer-bottom,
+.testimonial-card figcaption strong, .testimonial-card figcaption span { font-size: .875rem; }
+@media (max-width: 760px) {
+  .impact-section { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; }
+}
+@media (max-width: 360px) {
+  .impact-section { grid-template-columns: 1fr; }
 }
