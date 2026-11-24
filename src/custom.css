@@ -329,7 +329,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e8835e; outline-offs
   .hero-copy h1 { font-size: clamp(3.2rem, 11vw, 5rem); }
   .hero-role { font-size: 1.05rem; }
   .hero-intro { font-size: .9rem; }
-  .hero-photo-caption { right: -.5rem; bottom: .7rem; max-width: 165px; padding: .55rem; font-size: .65rem; }
+  .hero-photo-caption {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin-top: .75rem;
+    padding: .8rem .9rem;
+    box-shadow: none;
+  }
   .hero-bottom { padding: 0 1.5rem 1.3rem; }
   .site-main { padding: 0 1.5rem; }
   .page-section { padding: 4.5rem 0; }
@@ -354,9 +361,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e8835e; outline-offs
   .nav-links { order: 3; width: 100%; justify-content: space-between; }
   .nav-links a:nth-child(4) { display: inline; }
   .hero-wrap { grid-template-columns: 1fr; padding-top: 4rem; }
-  .hero-photo-wrap { width: min(70%, 240px); justify-self: start; margin-top: .5rem; }
-  .hero-photo { aspect-ratio: 5 / 4; }
-  .hero-bottom { align-items: flex-start; gap: 1rem; font-size: .58rem; }
+  .hero-photo-wrap { width: min(100%, 280px); justify-self: center; margin-top: .5rem; }
+  .hero-photo { aspect-ratio: 4 / 5; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: .75rem; }
   .project-grid, .testimonial-grid, .details-grid { grid-template-columns: 1fr; }
   .project-image { height: 200px; }
   .project-card p { min-height: 0; }
